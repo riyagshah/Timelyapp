@@ -27,15 +27,15 @@ userController.post("/signup",(req,res)=>{
 userController.post("/login",async(req,res)=>{
     const {email,password} = req.body;
     const user = await UserModel.findOne({email});
-     if(!user){
-        return res.send("Invalid Credentials");
+    if(!user){
+        return res.send("Invalid Credentials")
     }
     const hash = user.password;
-    const userId = user._id;
+    const userId = user._id
     bcrypt.compare(password, hash, function(err, result) {
         if(result){
             var token = jwt.sign({email,userId}, 'shhhhh');
-            res.send({"message": "Login Success",token})
+            return res.send({"message": "Login Success",token})
         }
         else{
             res.send("Invalid Credentials");
