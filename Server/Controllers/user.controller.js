@@ -27,7 +27,7 @@ userController.post("/signup",(req,res)=>{
 userController.post("/login",async(req,res)=>{
     const {email,password} = req.body;
     const user = await UserModel.findOne({email});
-     if(!user){
+    if(!user){
         return res.send("Invalid Credentials");
     }
     const hash = user.password;
