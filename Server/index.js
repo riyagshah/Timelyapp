@@ -1,6 +1,7 @@
 const express = require("express");
 const connection = require("./config/config");
 const userController = require("./Controllers/user.controller");
+const authentication = require("./Middlewares/Authentication");
 
 
 const app = express();
@@ -12,7 +13,8 @@ app.get("/",(req,res)=>{
 })
 
 
-app.use(userController)
+app.use(userController);
+app.use(authentication);
 
 
 app.listen(8080, async ()=>{
