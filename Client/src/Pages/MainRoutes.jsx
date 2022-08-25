@@ -4,7 +4,7 @@
 import React from 'react'
 import {Routes, Route} from "react-router-dom"
 import Dashboard from './Dashboard'
-import HomePage from './HomePage'
+import HomePage from './Home'
 import Login from './Login'
 import Project from './Project'
 import Signup from './Signup'
