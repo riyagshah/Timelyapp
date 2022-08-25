@@ -20,7 +20,7 @@ app.get("/",(req,res)=>{
 
 app.use("/user", userController)
 
-app.use(authentication)
+// app.use(authentication)
 
 app.use("/project", projectController)
 
