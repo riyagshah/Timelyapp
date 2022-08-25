@@ -8,6 +8,7 @@ let startTime = new Date();
 
 projectController.post("/create", async (req, res) => {
   const { projectname, clientname, projectStatus, userId } = req.body;
+   console.log(projectname,clientname,projectStatus,userId)
   const new_project = new ProjectModel({
     projectname,
     clientname,
