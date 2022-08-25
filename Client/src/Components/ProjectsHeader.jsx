@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Input, Text } from "@chakra-ui/react";
 import React from "react";
+import { ProjectsModal } from "./ProjectsModal";
 
 function ProjectsHeader() {
   return (
@@ -22,17 +23,15 @@ function ProjectsHeader() {
           Projects
         </Text>
         <Flex w="" alignItems="center">
-          <Box border="1px solid red" marginRight="16px">
-            <Input fontWeight="500" placeholder="Client or Project" />
+          <Box marginRight="16px" color="#303134">
+            <Input
+              border="1px solid blue"
+              type="text"
+              fontWeight="500"
+              placeholder="Client or Project"
+            />
           </Box>
-          <Button
-            bg="
-#3d73da"
-            paddingLeft={10}
-            paddingRight={10}
-          >
-            + New project
-          </Button>
+          <ProjectsModal />
         </Flex>
       </Flex>
       <Box w="max-content" color="black" display="flex" gap="16px">
