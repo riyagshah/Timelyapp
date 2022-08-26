@@ -7,6 +7,7 @@ const userController = express.Router();
 
 
 userController.post("/signup",(req,res)=>{
+ 
     const {email,name,password} = req.body;
     bcrypt.hash(password, 10, async function(err, hash) {
         if(err){

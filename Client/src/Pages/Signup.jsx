@@ -34,7 +34,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/signup",form)
+      .post("http://localhost:8080/user/signup",form)
       .then((res) => {
         console.log(res);
       })
