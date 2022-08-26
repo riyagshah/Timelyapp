@@ -48,7 +48,7 @@ const dispatch = useDispatch()
   console.log("data comming",  data)
 
   const dayTask = data.filter((e) => e.date === day.format("YYYY-MM-DD"));
- // console.log(dayTask);
+ console.log(dayTask);
   return (
     <Box 
     
