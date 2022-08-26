@@ -6,6 +6,7 @@ const passport = require("./Config/google-outh")
 const authentication = require("./Middlewares/Authentication");
 const projectController = require("./Controllers/project.controller")
 const { session } = require("./Config/google-outh");
+const taskController = require("./Controllers/Task.Controller");
 
 
 
@@ -23,6 +24,7 @@ app.use("/user", userController)
 // app.use(authentication)
 
 app.use("/project", projectController)
+app.use("/task",taskController)
 
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile','email'] }));

@@ -70,10 +70,14 @@ function AddTask({time,projectArray}) {
            
           <ModalBody pb={10}>
           <Select onChange={(e)=>setSelectProject(e.target.value)} pb={3} placeholder='Select Project'>
-  <option style={{"background" :"red"}} value='option1'>Option 1</option>
-  <option value='option2'>Option 2</option>
-  <option value='option3'>Option 3</option>
-  <option value='option1'>Option 1</option>
+        {projectArray.forEach((e)=>{
+        <li>
+
+ <option style={{"background" :"red"}} value={`${e.projectname}`}> {e.projectname}</option>
+ 
+        </li> 
+})}
+ 
    
 </Select >
  

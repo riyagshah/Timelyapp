@@ -17,13 +17,14 @@ import "./day.css";
  
  
  
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DayProjects from "./DayTask";
 import AddTask from "./AddTask";
 import axios from "axios";
+import { getTaskProject } from "../../Redux/Task_reducer/action";
 
 const   Day = ({ day, rowIdx,color,boxShadow1,wid }) => {
-
+const dispatch = useDispatch()
   const [projectArray,setProjectArray] = useState([])
   useEffect(()=>{
 
@@ -34,6 +35,7 @@ const   Day = ({ day, rowIdx,color,boxShadow1,wid }) => {
    
 
   },[])
+  
   console.log("projectArrayof main",projectArray)
 
   function getCurrentDayClass() {
