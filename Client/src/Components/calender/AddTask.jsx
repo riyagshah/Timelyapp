@@ -18,14 +18,15 @@ import { deleteProject, editProject,addNewProject } from "../../Redux/Task_reduc
 import { v4 as uuid } from "uuid";
  
 import { useSelector ,useDispatch} from 'react-redux'
-function AddTask({time}) {
-//  console.log(time)
+function AddTask({time,projectArray}) {
+  console.log("time",projectArray)
  const [date,setDate] = useState(time)
  const [text, setText] = useState("");
  const [selectProject, setSelectProject] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
  
-  
+ 
+
   const dispatch = useDispatch()
   const submitButton = () => {
    if(text){

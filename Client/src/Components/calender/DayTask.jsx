@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Box, Text, Avatar, Flex, Heading } from "@chakra-ui/react";
 
 import "./day.css";
@@ -6,8 +6,11 @@ import "./day.css";
 import { useDisclosure } from "@chakra-ui/react";
 import { useState } from "react";
 import TaskModel from "./EditTask";
-const DayProjects = ({ title, refNO, date, time }) => {
+import axios from "axios";
  
+const DayProjects = ({ title, refNO, date, time }) => {
+
+
   const [isdate, setDate] = useState(date);
   const { isOpen, onOpen, onClose } = useDisclosure();
 

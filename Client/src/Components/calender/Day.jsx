@@ -20,8 +20,22 @@ import "./day.css";
 import { useSelector } from "react-redux";
 import DayProjects from "./DayTask";
 import AddTask from "./AddTask";
+import axios from "axios";
 
 const   Day = ({ day, rowIdx,color,boxShadow1,wid }) => {
+
+  const [projectArray,setProjectArray] = useState([])
+  useEffect(()=>{
+
+    
+      axios.get("http://localhost:8080/project")
+      .then((res)=>  setProjectArray(res.data))
+      .catch((err)=>console.log(err))
+   
+
+  },[])
+  console.log("projectArrayof main",projectArray)
+
   function getCurrentDayClass() {
     return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY")
       ? color  || "#f8f9f4"
@@ -64,7 +78,7 @@ const   Day = ({ day, rowIdx,color,boxShadow1,wid }) => {
       <Box  className="hide" onClick={() => {
                   // console.log(day.format("MMM-DD"))
                   // setDayschdule(`${day.format("DD-MMMM-YYYY")}`);
-                }}>   <AddTask time={`${day.format("YYYY-MM-DD")}`} />
+                }}>   <AddTask projectArray={projectArray} time={`${day.format("YYYY-MM-DD")}`} />
      
       </Box>
     
