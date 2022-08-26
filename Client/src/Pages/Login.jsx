@@ -13,11 +13,51 @@ import {
     useMediaQuery,
     Button
   } from "@chakra-ui/react";
-  import { Link } from "react-router-dom";
+  import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
   import React from "react";
+  import {useDispatch, useSelector} from "react-redux";
+import { useState } from "react";
+import { loginApi } from "../Redux/AuthReducer/action";
+import { useEffect } from "react";
 
 const Login = () => {
-    const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+  const location = useLocation();
+  const comingFrom = location.state?.from?.pathname || "/dashboard";
+
+  const {isAuth,token} = useSelector((state)=>state.AuthReducer);
+
+
+  const [loginCred,setLoginCred] = useState({
+    email: "gaurav@gmail.com",
+    password: "gaurav123"
+  });
+
+  const handleChange = (e)=>{
+    let {name,value} = e.target;
+    setLoginCred({
+      ...loginCred,
+      [name]: value
+    })
+  }
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    dispatch(loginApi(loginCred));
+    console.log(loginCred);
+  }
+
+  useEffect(()=>{
+    if(isAuth==true && token!=undefined){
+      navigate(comingFrom,{replace:true})
+    }
+  },[navigate,isAuth,token])
+
+  console.log(isAuth)
+  console.log(token)
+
   return (
     <Box>
     <br />
@@ -79,7 +119,7 @@ const Login = () => {
         Dont have an Account Signup
       </Text>
       <br />
-      <VStack spacing="25px">
+      {/* <VStack spacing="25px">
         <FormControl isRequired>
           <Input placeholder="Email" />
         </FormControl>
@@ -90,7 +130,16 @@ const Login = () => {
       <br />
       <br />
       <br />
-      <Button size="lg" height="65px" width={isLargerThan768 ? "600px" : "350px"}>Login</Button>
+      <Button size="lg" height="65px" width={isLargerThan768 ? "600px" : "350px"}>Login</Button> */}
+
+      <form action="" onSubmit={handleSubmit}>
+          <VStack spacing="25px">
+              <Input placeholder="Email" name="email" value={loginCred.email} onChange={handleChange} ></Input>
+              <Input placeholder="Password" name="password" value={loginCred.password} onChange={handleChange}></Input>
+              <Button type="submit" size="lg" height="65px" width={isLargerThan768 ? "600px" : "350px"}>Login</Button> 
+          </VStack>
+       
+      </form>
     </Box>
   </Flex>
   </Box>
