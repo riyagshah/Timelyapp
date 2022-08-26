@@ -1,11 +1,13 @@
 import { applyMiddleware, combineReducers,compose, legacy_createStore } from "redux"
 import { reducer as AppReducer } from "./AppReducer/reducer"
 import {reducer as AuthReducer } from "./AuthReducer/reducer"
+import {reducer as Task_reducer} from './Task_reducer/reducer'
  import thunk from "redux-thunk"
 
 const rootReducer = combineReducers({
      AuthReducer,
-     AppReducer
+     AppReducer,
+     Task_reducer
 }); 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
