@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
   import GlobalContext from "../../context/GlobalContext"
 import {getMonth} from '../../utils/utils'
+import CalenderHeader from './CalenderHeader'
  
 import Month from './Month'
  
@@ -19,11 +20,11 @@ const Calender = () => {
 
   console.table(currentMonth)
   return (
-    <div> 
-     
+    <> 
+     <CalenderHeader/>
       <Month month={currentMonth}/>
  
-    </div>
+    </>
   )
 }
 

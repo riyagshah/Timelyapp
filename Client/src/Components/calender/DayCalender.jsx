@@ -6,6 +6,7 @@ import { SimpleGrid, Container, Box, Text } from "@chakra-ui/react";
 import GlobalContext from "../../context/GlobalContext";
 import { getMonth } from "../../utils/utils";
 import dayjs from "dayjs";
+import CalenderHeader from "./CalenderHeader";
 
 const DayCalender = () => {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -32,6 +33,8 @@ const DayCalender = () => {
   //  console.log(month)
 
   return (
+    <>
+  <CalenderHeader/>
     <Box w="98%" m="auto" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
       <Box>
         {currentMonth.map((row, i) => {
@@ -46,13 +49,13 @@ const DayCalender = () => {
 if (day.format("DD-MM-YY") === dayjs().format("DD-MM-YY") ){
   return (
 
-                  <Day color={"white"} boxShadow1={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"} wid = {"20rem"} day={day} key={idx}  />
-          ) 
-         }else {
-          return null;
-        }
-         
-         })}
+    <Day color={"white"} boxShadow1={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"} wid = {"20rem"} day={day} key={idx}  />
+    ) 
+  }else {
+    return null;
+  }
+  
+})}
               </SimpleGrid>
               )} else {
 
@@ -61,6 +64,7 @@ if (day.format("DD-MM-YY") === dayjs().format("DD-MM-YY") ){
  } )}
       </Box>
     </Box>
+</>
   );
 };
 export default DayCalender;

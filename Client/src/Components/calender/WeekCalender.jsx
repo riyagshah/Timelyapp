@@ -6,6 +6,7 @@ import { SimpleGrid, Container, Box, Text  } from "@chakra-ui/react";
 import GlobalContext from "../../context/GlobalContext";
 import { getMonth } from "../../utils/utils";
 import dayjs from "dayjs";
+import CalenderHeader from "./CalenderHeader";
 const WeekCalender = () => {
 
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -34,6 +35,8 @@ const currentWeek = useRef()
   //  console.log(month)
 
   return (
+    <>
+    <CalenderHeader/>
     <Box w="98%" m="auto" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
       <Box>
         {currentMonth.map((row, i) => {
@@ -55,6 +58,7 @@ const currentWeek = useRef()
         })}
       </Box>
     </Box>
+                </>
   );
 };
 export default WeekCalender;
