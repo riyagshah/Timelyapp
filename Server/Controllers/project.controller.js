@@ -1,6 +1,6 @@
 const express = require("express");
 
-const ProjectModel = require("../models/Project.model");
+const ProjectModel = require("../Models/Project.model");
 
 const projectController = express.Router();
 

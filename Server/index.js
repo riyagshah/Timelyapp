@@ -1,5 +1,5 @@
 const express = require("express");
-const connection = require("./config/config");
+const connection = require("./Config/config");
 const userController = require("./Controllers/user.controller");
 var cors = require('cors')
 const passport = require("./Config/google-outh")
