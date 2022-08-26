@@ -54,7 +54,7 @@ const getProjets = (payload) => (dispatch) => {
   dispatch(getProjectRequest());
 
   axios
-    .get("")
+    .get("http://localhost:8080/project")
     .then((res) => dispatch(getProjectSuccess(res.data)))
     .catch((err) => dispatch(getProjectFailure(err)));
 };
@@ -63,7 +63,7 @@ const addProjects = (payload) => (dispatch) => {
   console.log(payload);
   dispatch(addProjectRequest());
   axios
-    .post("", payload)
+    .post("http://localhost:8080/project/create", payload)
     .then((res) => {
       dispatch(addProjectSuccess());
       console.log(res.data);
