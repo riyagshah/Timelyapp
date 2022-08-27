@@ -23,7 +23,7 @@ import {
 import { v4 as uuid } from "uuid";
 
 import { useSelector, useDispatch } from "react-redux";
-function AddTask({ time, projectArray }) {
+function AddTask({ time, projectArray,wid="11rem" }) {
   // console.log("time", projectArray);
   const [date, setDate] = useState(time);
   const [text, setText] = useState("");
@@ -53,10 +53,11 @@ function AddTask({ time, projectArray }) {
         h="3rem"
         alignItems={"center"}
         marginTop="10px"
-        w="11rem"
+        w =  {`${wid}`}
         bg={"SKYblue"}
         marginLeft="-2px"
         color="white"
+         
         onClick={onOpen}
       >
         Add Entry

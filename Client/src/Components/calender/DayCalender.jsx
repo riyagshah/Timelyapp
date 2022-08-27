@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Day from "./Day";
 
-import { SimpleGrid, Container, Box, Text, Flex } from "@chakra-ui/react";
+import { SimpleGrid, Container, Box, Text, Flex ,Image} from "@chakra-ui/react";
 
 import GlobalContext from "../../context/GlobalContext";
 import { getMonth } from "../../utils/utils";
 import dayjs from "dayjs";
-import CalenderHeader from "./CalenderHeader";
+import CalenderHeader from "./CalenderHeader";  
 import ProjetcSideBar from "../ProjetcSideBar";
 
 const DayCalender = () => {
@@ -40,7 +40,9 @@ const DayCalender = () => {
       <Box  ml="7rem"  w="90%">
 
       <CalenderHeader />
-      <Box w="98%" m="auto" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+      <Flex>
+
+      <Box  w="40rem"   boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
         <Box>
           {currentMonth.map((row, i) => {
             // console.log(row, i);
@@ -52,11 +54,12 @@ const DayCalender = () => {
                       return (
                         <Day
                           color={"white"}
-                          
+                          show={false}
                           boxShadow1={
                             "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
                           }
-                         
+                         wid={"40rem"}
+                         hei="100vh"
                           day={day}
                           key={idx}
                           />
@@ -73,6 +76,10 @@ const DayCalender = () => {
           })}
         </Box>
       </Box>
+      <Box>
+       <Image   w="800px" h="760px"  src="https://i.postimg.cc/T18NpT6K/Screenshot-579.png"/>
+      </Box>
+          </Flex>
           </Box>
           </Flex>
     </>

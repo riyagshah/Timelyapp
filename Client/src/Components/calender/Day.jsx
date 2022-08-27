@@ -23,7 +23,7 @@ import AddTask from "./AddTask";
 import axios from "axios";
 import { getTaskProject } from "../../Redux/Task_reducer/action";
 
-const   Day = ({ day, rowIdx,color,boxShadow1,wid }) => {
+const   Day = ({ day, rowIdx,color,boxShadow1,show=true,wid="167",hei="200px" }) => {
 const dispatch = useDispatch()
   const [projectArray,setProjectArray] = useState([])
   useEffect(()=>{
@@ -63,8 +63,8 @@ dispatch(getTaskProject())
       className="myDIV"
       p="10px"
       border={"1px solid lightgrey"}
-      w= "167"
-      minH="200px"
+      w =  {`${wid}`}
+      minH={`${hei}`}
       textAlign="start"
       bgColor={`${getCurrentDayClass()}`}
      
@@ -85,12 +85,19 @@ dispatch(getTaskProject())
         ))} 
          
       </Box>
-      <Box  className="hide" onClick={() => {
-                  // console.log(day.format("MMM-DD"))
-                  // setDayschdule(`${day.format("DD-MMMM-YYYY")}`);
-                }}>   <AddTask projectArray={projectArray} time={`${day.format("YYYY-MM-DD")}`} />
-     
-      </Box>
+    {
+      show?  <Box  className="hide"  onClick={() => {
+        // console.log(day.format("MMM-DD"))
+        // setDayschdule(`${day.format("DD-MMMM-YYYY")}`);
+      }}>   <AddTask projectArray={projectArray} time={`${day.format("YYYY-MM-DD")}`} />
+
+</Box>:  <Box    onClick={() => {
+        // console.log(day.format("MMM-DD"))
+        // setDayschdule(`${day.format("DD-MMMM-YYYY")}`);
+      }}>   <AddTask wid={"39rem"} projectArray={projectArray} time={`${day.format("YYYY-MM-DD")}`} />
+
+</Box>
+    } 
     
     </Box>
   );
