@@ -21,7 +21,7 @@ import {
   addNewProject,
 } from "../../Redux/Task_reducer/action";
 
-const TaskModel = ({ isOpen, onClose, time, title, project, refNO }) => {
+const TaskModel = ({ isOpen, onClose, time, title, project, refNO ,projectArray,projectId}) => {
   const dispatch = useDispatch();
 
   const [date, setDate] = useState(time);
@@ -36,10 +36,11 @@ const [refId,setrefId] =  useState(refNO)
         title: text,
         project: selectProject,
         date: date,
-        refNO:refId 
+        refNO:refId,
+        projectId
       };
-console.log("editbuttnon", refId)
-      dispatch(editProject(refId, payload));
+// console.log("editbuttnon", refId)
+      dispatch(editProject(refId, payload,projectId));
     }
   };
   const handleDelte = () => { 
@@ -56,19 +57,17 @@ console.log("editbuttnon", refId)
         </ModalHeader>
 
         <ModalBody pb={10}>
-          <Select
-            onChange={(e) => setSelectProject(e.target.value)}
-            pb={3}
-            placeholder="Select Project"
-            value={project}
-          >
-            <option style={{ background: "red" }} value="option1">
-              Option 1
-            </option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-            <option value="option1">Option 1</option>
-          </Select>
+        <Select
+              onChange={(e) => setSelectProject(e.target.value)}
+              pb={3}
+              placeholder="Select Project"
+             defaultValue={project}
+         
+            >
+              {projectArray.map((e) => {
+                return <option value={`${e.projectname}`}>{e.projectname}</option>;
+              })}
+            </Select>
 
           <Input
             type={"date"}

@@ -1,70 +1,43 @@
 const express = require("express");
 const ProjectModel = require("../Models/Project.model");
 
-const TaskModel = require("../Models/Task.model")
+const TaskModel = require("../Models/Task.model");
 
 const taskController = express.Router();
 
-
 taskController.post("/create", async (req, res) => {
-   const project = await ProjectModel.findOne()
-   //console.log(project)
-   const projectId = project._id
-   const projectname = project.projectname
-    const {taskname,taskTime} = req.body;
-    const new_task = new TaskModel({
-        taskname,
-        projectname,
-        taskTime,
-        projectId
-    })
-    await new_task.save()
-    res.send({"message" : "Task has been created", new_task})
-})
+  const { title, date, refNO, project } = req.body;
+  const Mainproject = await ProjectModel.findOne({ projectname: project });
+  const projectId = Mainproject._id;
+  const new_task = new TaskModel({
+    title,
+    project,
+    date,
+    projectId,
+    refNO,
+  });
+  await new_task.save();
+  res.send({ message: "Task has been created", new_task });
+});
 
 taskController.get("/", async (req, res) => {
-   const project = await ProjectModel.findOne()
-   const projectId = project._id
-   const tasks = await TaskModel.find({projectId})
-   res.send(tasks)
-   console.log(tasks)
-})
+  const tasks = await TaskModel.find();
+  res.send(tasks);
+});
 
+taskController.patch("/edit", async (req, res) => {
+  const { refNO } = req.body;
 
-taskController.patch("/:taskId/edit", async (req, res) => {
-     const {taskId} = req.params;
-     //const {userId} = req.body;
-     const project = await ProjectModel.findOne()
-     console.log(project)
-     const projectId = project._id
-     const task = await TaskModel.findOne({_id : taskId})
-    
-     if(task.projectId == projectId){
-        const new_task = await TaskModel.findOneAndUpdate({_id : taskId}, req.body, {new:true})
-        return res.send({"message" : "Task has been updated successfully!", new_task})
-        
-     }
-     else{
-        return res.send("you are not authorised to do it")
-     }
-})
+  const new_task = await TaskModel.updateOne({ refNO: refNO }, req.body);
 
-taskController.delete("/:taskId/delete", async (req, res) => {
-    const {taskId} = req.params;
-    //const {userId} = req.body;
-    const project = await ProjectModel.findOne()
-    const projectId = project._id
-    const task = await TaskModel.findOne({_id : taskId})
-   
-    if(task.projectId == projectId){
-       await TaskModel.findOneAndDelete({_id : taskId})
-       return res.send({"message" : "Task has been deleted successfully!"})
-    }
-    else{
-       return res.send("you are not authorised to do it")
-    }
-})
+  return res.send({ message: "Task has been updated successfully!", new_task });
+});
 
+taskController.delete("/:refNO/delete", async (req, res) => {
+  const { refNO } = req.params;
 
+  await TaskModel.deleteOne({ refNO: refNO });
+  return res.send({ message: "Task has been deleted successfully!" });
+});
 
-module.exports = taskController
+module.exports = taskController;

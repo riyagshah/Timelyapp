@@ -10,7 +10,8 @@ import ProjetcSideBar from "../Components/ProjetcSideBar";
 
 const Project = () => {
   const projects = useSelector((store) => store.AppReducer.projectName);
-  console.log(projects);
+
+
   const dispatch = useDispatch();
 
   useEffect(() => {

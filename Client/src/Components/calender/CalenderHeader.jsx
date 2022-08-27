@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/icons";
 import { Box, Button, Flex, Heading, Center, Text } from "@chakra-ui/react";
 import dayjs from "dayjs";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../../context/GlobalContext";
 import { Link } from "react-router-dom";
  
@@ -16,8 +16,10 @@ import { Link } from "react-router-dom";
 import { BiTask } from "react-icons/bi";
 
 import { FiSmile } from "react-icons/fi";
+import { getTaskProject } from "../../Redux/Task_reducer/action";
+import { useDispatch } from "react-redux";
 const CalenderHeader = () => {
-  
+
 
   const [isDay, setIsDay] = useState(false);
   const [isWeek, setIsWeek] = useState(false);
