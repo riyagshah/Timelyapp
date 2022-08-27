@@ -41,7 +41,7 @@ const Signup = () => {
       .catch((err) => {
         console.log(err);
       });
-    console.log(form)
+    // console.log(form)
   };
 
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)");

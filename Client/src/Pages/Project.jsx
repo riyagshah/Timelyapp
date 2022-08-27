@@ -10,7 +10,7 @@ import { getProjets } from '../Redux/AppReducer/action'
 const Project = () => {
 
   const projects = useSelector((store) => store.AppReducer.projectName);
-  console.log(projects)
+  // console.log(projects)
   const dispatch = useDispatch();
 
 

@@ -35,8 +35,16 @@ const dispatch = useDispatch()
    
 
   },[])
+
+ 
   
-  console.log("projectArrayof main",projectArray)
+  // console.log("projectArrayof main",projectArray)
+
+ 
+  useEffect(()=>{
+    // console.log("getTask useEffect")
+dispatch(getTaskProject())
+  },[])
 
   function getCurrentDayClass() {
     return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY")
@@ -45,10 +53,10 @@ const dispatch = useDispatch()
   }
  
   const data = useSelector((state) => state.Task_reducer.project);
-  console.log("data comming",  data)
+  // console.log("data comming",  data)
 
   const dayTask = data.filter((e) => e.date === day.format("YYYY-MM-DD"));
- console.log(dayTask);
+//  console.log(dayTask);
   return (
     <Box 
     
@@ -73,7 +81,7 @@ const dispatch = useDispatch()
       </Flex>
       <Box>
         {dayTask.map((e) => (
-           <DayProjects key={e.refNO}   {...e} time={`${day.format("YYYY-MM-DD")}`} />
+           <DayProjects key={e.refNO} projectArray={projectArray}  {...e} time={`${day.format("YYYY-MM-DD")}`} />
         ))} 
          
       </Box>

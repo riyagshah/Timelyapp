@@ -8,7 +8,7 @@ import { useState } from "react";
 import TaskModel from "./EditTask";
 import axios from "axios";
  
-const DayProjects = ({ title, refNO, date, time }) => {
+const DayProjects = ({ title, refNO, date, time,projectArray,project,projectId }) => {
 
 
   const [isdate, setDate] = useState(date);
@@ -32,14 +32,16 @@ const DayProjects = ({ title, refNO, date, time }) => {
       >
         <Box borderRadius="10px" h="auto" p="10px" fontSize={"20px"}>
           <Heading fontSize={"25px"}>{title}</Heading>
-          <Text>project name</Text>
+          <Text>{project}</Text>
         </Box>
       </Box>
       <TaskModel
-   
+      key={refNO}
+   projectArray={projectArray}
         refNO={refNO}
         title={title}
-        project={""}
+        project={project}
+        projectId={projectId}
         time={time}
         date={isdate}
         setDate={setDate}

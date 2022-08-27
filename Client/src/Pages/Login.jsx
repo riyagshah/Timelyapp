@@ -46,7 +46,7 @@ const Login = () => {
   const handleSubmit = (e)=>{
     e.preventDefault();
     dispatch(loginApi(loginCred));
-    console.log(loginCred);
+    // console.log(loginCred);
   }
 
   useEffect(()=>{
@@ -55,8 +55,8 @@ const Login = () => {
     }
   },[navigate,isAuth,token])
 
-  console.log(isAuth)
-  console.log(token)
+  // console.log(isAuth)
+  // console.log(token)
 
   return (
     <Box>
