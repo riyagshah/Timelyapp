@@ -46,8 +46,9 @@ projectController.patch("/:projectId/edit", async (req, res) => {
   }
 });
 
-projectController.delete("/:projectId/delete", async (req, res) => {
+projectController.delete("/delete/:projectId", async (req, res) => {
   const { projectId } = req.params;
+  
   const { userId } = req.body;
   const project = await ProjectModel.findOne({ _id: projectId });
 
