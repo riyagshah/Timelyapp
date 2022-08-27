@@ -37,8 +37,7 @@ const ProjectCard = ({ projects }) => {
           <Text marginBottom="-10px">{projects.projectname}</Text>
           <Text color="gray">{projects.clientname}</Text>
         </Stack>
-      </Flex>
-
+ 
       <Menu w="400px">
         <MenuButton>....</MenuButton>
         <MenuList>

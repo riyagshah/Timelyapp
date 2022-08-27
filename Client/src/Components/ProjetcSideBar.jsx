@@ -7,7 +7,11 @@ import {
   BsPeopleFill,
   BsBarChartLineFill,
 } from "react-icons/bs";
+
+import { Link } from "react-router-dom";
 const ProjetcSideBar = () => {
+
+  
   return (
     <Stack
       w="100px"
@@ -19,16 +23,27 @@ const ProjetcSideBar = () => {
       alignItems="center"
     >
       <Stack alignItems="center" gap="0px">
+          <Link to='/day'>
         <BsClockFill fontSize="25px" />
-        <label>Hours</label>
+        <label>
+
+          Hours
+          </label>
+          </Link>
       </Stack>
       <Stack alignItems="center">
         <BsFillBagCheckFill fontSize="25px" />
         <label>Task</label>
       </Stack>
       <Stack alignItems="center">
+          <Link to='/projects'>
         <BsBagFill fontSize="25px" />
-        <label>Projects</label>
+
+        <label>
+
+          Projects
+          </label>
+          </Link>
       </Stack>
       <Stack alignItems="center">
         <BsPeopleFill fontSize="25px" />
