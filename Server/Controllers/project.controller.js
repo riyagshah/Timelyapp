@@ -6,6 +6,15 @@ const projectController = express.Router();
 
 let startTime = new Date();
 
+const getRandomColor = () => {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+let pColor = getRandomColor()
 projectController.post("/create", async (req, res) => {
   const { projectname, clientname, projectStatus, userId } = req.body;
    console.log(projectname,clientname,projectStatus,userId)
@@ -14,6 +23,7 @@ projectController.post("/create", async (req, res) => {
     clientname,
     projectStatus,
     startTime,
+    pColor,
     userId,
   });
   await new_project.save();
