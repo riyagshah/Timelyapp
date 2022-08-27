@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { deleteProjtes, getProjets } from "../Redux/AppReducer/action";
 import { BsFillBagFill } from "react-icons/bs";
 
-
 const ProjectCard = ({ projects }) => {
   const dispatch = useDispatch();
   const handleClick = (id) => {
@@ -16,20 +15,14 @@ const ProjectCard = ({ projects }) => {
   };
 
   const handleEdit = () => {
-   
     console.log("handleedit");
   };
-
 
   const handleStatus = (e) => {
     const payload = {
       projectStatus: "Complete",
     };
-
-    
-}
-
-
+  };
 
   console.log(projects);
   return (
@@ -39,8 +32,7 @@ const ProjectCard = ({ projects }) => {
       margin="auto"
       alignItems="center"
     >
-      <Flex alignItems="center" gap="10px" >
-        <BsFillBagFill  color={projects.pColor} fontSize="30px" />
+
         <Stack gap="-50px">
           <Text marginBottom="-10px">{projects.projectname}</Text>
           <Text color="gray">{projects.clientname}</Text>
