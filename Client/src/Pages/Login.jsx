@@ -25,7 +25,7 @@ const Login = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const location = useLocation();
-  const comingFrom = location.state?.from?.pathname || "/dashboard";
+  const comingFrom = location.state?.from?.pathname || "/projects";
 
   const {isAuth,token} = useSelector((state)=>state.AuthReducer);
 
