@@ -2,6 +2,9 @@ import {
   ADD_PROJECT_FAILURE,
   ADD_PROJECT_REQUEST,
   ADD_PROJECT_SUCCESS,
+  DELETE_PROJECT_FAILURE,
+  DELETE_PROJECT_REQUEST,
+  DELETE_PROJECT_SUCCESS,
   GET_PROJECT_FAILURE,
   GET_PROJECT_REQUEST,
   GET_PROJECT_SUCCESS,
@@ -50,6 +53,33 @@ const getProjectFailure = (payload) => {
   };
 };
 
+
+
+const deleteProjectRequest = (payload) => {
+  return {
+    type: DELETE_PROJECT_REQUEST,
+    payload,
+  };
+};
+const deleteProjectSuccess = (payload) => {
+  return {
+    type: DELETE_PROJECT_SUCCESS,
+    payload,
+  };
+};
+const deleteProjectFailure = (payload) => {
+  return {
+    type: DELETE_PROJECT_FAILURE,
+    payload,
+  };
+};
+
+
+
+
+
+
+
 const getProjets = (payload) => (dispatch) => {
   dispatch(getProjectRequest());
 
@@ -59,10 +89,12 @@ const getProjets = (payload) => (dispatch) => {
     .catch((err) => dispatch(getProjectFailure(err)));
 };
 
+
+
 const addProjects = (payload) => (dispatch) => {
-  console.log(payload);
+  
   dispatch(addProjectRequest());
-  axios
+ return  axios
     .post("http://localhost:8080/project/create", payload)
     .then((res) => {
       dispatch(addProjectSuccess());
@@ -71,4 +103,16 @@ const addProjects = (payload) => (dispatch) => {
     .catch((err) => dispatch(addProjectFailure()));
 };
 
-export { addProjects, getProjets };
+
+const deleteProjtes = (payload) => (dispatch) => {
+  console.log(payload);
+  dispatch(deleteProjectRequest());
+   return axios.delete(`http://localhost:8080/project/delete/${payload}`).then(res => {
+    dispatch(deleteProjectSuccess())
+    console.log(res.data)
+  }).catch((err) => {
+    dispatch(deleteProjectFailure());
+  });
+}
+
+export { addProjects, getProjets, deleteProjtes };

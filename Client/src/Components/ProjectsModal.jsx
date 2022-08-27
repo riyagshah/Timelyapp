@@ -14,7 +14,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import {useDispatch} from "react-redux"
-import { addProjects } from "../Redux/AppReducer/action";
+import { addProjects, getProjets } from "../Redux/AppReducer/action";
 
 function ProjectsModal() {
     
@@ -32,7 +32,7 @@ function ProjectsModal() {
             projectname: projectName,
             clientname:clientName,
         }
-        dispatch(addProjects(payload));
+        dispatch(addProjects(payload)).then(res=>dispatch(getProjets()));
     }
     
  
