@@ -1,31 +1,54 @@
 import { Box, Flex, Input, Stack, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { deleteProjtes, getProjets } from "../Redux/AppReducer/action";
+import {
+  deleteProjtes,
+  editProject,
+  getProjets,
+} from "../Redux/AppReducer/action";
 import { BsFillBagFill } from "react-icons/bs";
 import { EditProjects } from "./EditProjects";
 
 const ProjectCard = ({ projects }) => {
+  const [status, setStatus] = useState("");
   const dispatch = useDispatch();
-  const handleClick = (id) => {
+
+  const handleDelete = (id) => {
     console.log("delete:", id);
     dispatch(deleteProjtes(id)).then((res) => {
       dispatch(getProjets());
     });
   };
 
-  const handleEdit = () => {
-    console.log("handleedit");
+  const handleStatus = (e, id) => {
+    console.log(e.target.checked, id);
+    console.log(e.target.defaultChecked);
+    if (e.target.defaultChecked) {
+      var payload = {
+        id: id,
+        body: {
+          projectStatus: "Pending",
+        },
+      };
+   }
+    else {
+       var payload = {
+         id: id,
+         body: {
+           projectStatus: "Complete",
+         },
+       };
+    }
+  
+    
+   
+    dispatch(editProject(payload)).then((res) => {
+      dispatch(getProjets());
+    })
   };
+  // console.log(projects)
 
-  const handleStatus = (e) => {
-    const payload = {
-      projectStatus: "Complete",
-    };
-  };
-
-  console.log(projects);
   return (
     <Flex
       w="90%"
@@ -33,7 +56,7 @@ const ProjectCard = ({ projects }) => {
       margin="auto"
       alignItems="center"
     >
-      <Flex alignItems="center" gap="16px" >
+      <Flex alignItems="center" gap="16px">
         <BsFillBagFill fontSize="35px" color={projects.pColor} />
         <Stack gap="-50px">
           <Text marginBottom="-10px">{projects.projectname}</Text>
@@ -53,16 +76,18 @@ const ProjectCard = ({ projects }) => {
             <Box>
               <input
                 type="checkbox"
-                onChange={() => handleStatus(projects._id)}
+                value={projects.projectStatus}
+                defaultChecked={projects.projectStatus === "Complete"}
+                onChange={(e) => handleStatus(e, projects._id)}
               />
               {"  "}
               <label>{projects.projectStatus}</label>
             </Box>
 
-            <p onClick={handleEdit}>
+            <p>
               <EditProjects project={projects} />
             </p>
-            <p onClick={() => handleClick(projects._id)}>Delete</p>
+            <p onClick={() => handleDelete(projects._id)}>Delete</p>
           </Flex>
         </MenuList>
       </Menu>

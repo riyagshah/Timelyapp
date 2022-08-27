@@ -39,6 +39,7 @@ projectController.get("/", async (req, res) => {
 
 projectController.patch("/edit/:projectId", async (req, res) => {
   const { projectId } = req.params;
+  console.log(projectId)
   const { userId } = req.body;
   const project = await ProjectModel.findOne({ _id: projectId });
 

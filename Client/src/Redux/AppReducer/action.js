@@ -132,7 +132,12 @@ const deleteProjtes = (payload) => (dispatch) => {
 const editProject = (payload) => (dispatch) => {
   dispatch(patchProjectRequest());
   return axios
-    .patch(`http://localhost:8080/project/edit/${payload.id}`, payload.body)
+    .patch(`http://localhost:8080/project/edit/${payload.id}`, payload.body, {
+      headers: {
+        "Content-Type": "application/json",
+        // authentication: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
     .then((res) => {
       dispatch(patchProjectSuccess());
     })
@@ -141,4 +146,4 @@ const editProject = (payload) => (dispatch) => {
     });
 };
 
-export { addProjects, editProject,getProjets, deleteProjtes };
+export { addProjects, editProject, getProjets, deleteProjtes };
