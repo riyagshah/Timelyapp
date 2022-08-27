@@ -36,7 +36,9 @@ function EditProjects({ project }) {
      };
      
      dispatch(editProject(payload)).then(res => {
-         dispatch(getProjets());
+         dispatch(getProjets()).then(res => {
+             dispatch(getProjets());
+         })
      })
 
 }

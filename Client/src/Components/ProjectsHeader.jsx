@@ -26,7 +26,7 @@ function ProjectsHeader() {
         <Flex w="" alignItems="center">
           <Box marginRight="16px" color="#303134">
             <Input
-              border="1px solid blue"
+              
               type="text"
               fontWeight="500"
               placeholder="Client or Project"
