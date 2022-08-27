@@ -53,7 +53,7 @@ function AddTask({ time, projectArray }) {
         h="3rem"
         alignItems={"center"}
         marginTop="10px"
-        w="12rem"
+        w="11rem"
         bg={"SKYblue"}
         marginLeft="-2px"
         color="white"

@@ -37,7 +37,7 @@ const DayCalender = () => {
     <>
     <Flex>
     <ProjetcSideBar />
-      <Box>
+      <Box  ml="7rem"  w="90%">
 
       <CalenderHeader />
       <Box w="98%" m="auto" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
@@ -52,10 +52,11 @@ const DayCalender = () => {
                       return (
                         <Day
                           color={"white"}
+                          
                           boxShadow1={
                             "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
                           }
-                          wid={"20rem"}
+                         
                           day={day}
                           key={idx}
                           />

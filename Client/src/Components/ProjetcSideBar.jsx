@@ -18,7 +18,9 @@ const ProjetcSideBar = () => {
       bg="#44505e"
       gap="40px"
       alignItems="center"
+
       position="Relative"
+
     >
       <Link to="/">
         <Stack marginTop="50px">

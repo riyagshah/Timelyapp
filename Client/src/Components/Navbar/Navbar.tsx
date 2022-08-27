@@ -89,7 +89,7 @@ export default function WithSubnavigation() {
         color={"black"}
         fontWeight={500}
         variant={"solid"}
-        onClick={() => navigate("/freetrial")}
+        onClick={() => navigate("/signup")}
       >
         Start 14-day free trial
       </Button>
