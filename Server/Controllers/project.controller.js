@@ -1,6 +1,7 @@
 const express = require("express");
 
 const ProjectModel = require("../Models/Project.model");
+const taskModel = require("../Models/Task.model");
 
 const projectController = express.Router();
 
@@ -66,6 +67,7 @@ projectController.delete("/delete/:projectId", async (req, res) => {
 
   if (project.userId === userId) {
     await ProjectModel.findOneAndDelete({ _id: projectId });
+   
     return res.send({ message: "Project has been deleted successfully!" });
   } else {
     return res.send("you are not authorised to do it");

@@ -12,9 +12,11 @@ import { Link } from "react-router-dom";
 const ProjetcSideBar = () => {
   return (
     <Stack
-      w="100px"
+     
+      minW="100px"
       color="white"
-      h="100vh"
+      
+      minH="100vh"
       bg="#44505e"
       gap="40px"
       alignItems="center"

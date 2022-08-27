@@ -39,7 +39,7 @@ const currentWeek = useRef()
     <>
     <Flex>
     <ProjetcSideBar />
-<Box  ml="7rem"  w="90%">
+<Box   w="90%">
     <CalenderHeader/>
 
     <Box w="98%" m="auto" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">

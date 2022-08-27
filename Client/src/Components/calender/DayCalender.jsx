@@ -37,7 +37,7 @@ const DayCalender = () => {
     <>
     <Flex>
     <ProjetcSideBar />
-      <Box  ml="7rem"  w="90%">
+      <Box    w="90%">
 
       <CalenderHeader />
       <Flex>
