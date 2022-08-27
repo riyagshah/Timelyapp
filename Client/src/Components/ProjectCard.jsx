@@ -32,8 +32,7 @@ const ProjectCard = ({ projects }) => {
       margin="auto"
       alignItems="center"
     >
-      <Flex alignItems="center" gap="10px">
-        <BsFillBagFill color={projects.pColor} fontSize="30px" />
+
         <Stack gap="-50px">
           <Text marginBottom="-10px">{projects.projectname}</Text>
           <Text color="gray">{projects.clientname}</Text>
