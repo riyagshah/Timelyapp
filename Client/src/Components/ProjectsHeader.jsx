@@ -6,12 +6,13 @@ function ProjectsHeader() {
   return (
     <Box
       bg="#eef1f2"
-      w="100%"
+       w="100%"
       p={4}
       height="120px"
       color="white"
       paddingRight="10%"
       paddingLeft="10%"
+      
     >
       <Flex justifyContent="space-between">
         <Text

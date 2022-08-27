@@ -33,12 +33,14 @@ const ProjectCard = ({ projects }) => {
       margin="auto"
       alignItems="center"
     >
-
+      <Flex alignItems="center" gap="16px" >
+        <BsFillBagFill fontSize="35px" color={projects.pColor} />
         <Stack gap="-50px">
           <Text marginBottom="-10px">{projects.projectname}</Text>
           <Text color="gray">{projects.clientname}</Text>
         </Stack>
- 
+      </Flex>
+
       <Menu w="400px">
         <MenuButton>....</MenuButton>
         <MenuList>
@@ -57,7 +59,9 @@ const ProjectCard = ({ projects }) => {
               <label>{projects.projectStatus}</label>
             </Box>
 
-            <p onClick={handleEdit}><EditProjects project={projects} /></p>
+            <p onClick={handleEdit}>
+              <EditProjects project={projects} />
+            </p>
             <p onClick={() => handleClick(projects._id)}>Delete</p>
           </Flex>
         </MenuList>

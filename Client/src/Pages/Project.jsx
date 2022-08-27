@@ -22,9 +22,8 @@ const Project = () => {
 
   return (
     <Flex>
-      
       <ProjetcSideBar />
-      <Box>
+      <Box w="100%">
         <ProjectsHeader />
         <Wrap spacing="40px" w="80%" margin="auto" paddingTop="46px">
           {projects.length > 0 &&
@@ -47,7 +46,7 @@ const Project = () => {
             })}
         </Wrap>
       </Box>
-   </Flex>
+    </Flex>
   );
 };
 
