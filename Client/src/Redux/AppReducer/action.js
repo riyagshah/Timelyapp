@@ -8,6 +8,9 @@ import {
   GET_PROJECT_FAILURE,
   GET_PROJECT_REQUEST,
   GET_PROJECT_SUCCESS,
+  PATCH_PROJECT_FAILURE,
+  PATCH_PROJECT_REQUEST,
+  PATCH_PROJECT_SUCCESS,
 } from "./actionType";
 import axios from "axios";
 
@@ -53,8 +56,6 @@ const getProjectFailure = (payload) => {
   };
 };
 
-
-
 const deleteProjectRequest = (payload) => {
   return {
     type: DELETE_PROJECT_REQUEST,
@@ -74,11 +75,25 @@ const deleteProjectFailure = (payload) => {
   };
 };
 
+const patchProjectRequest = (payload) => {
+  return {
+    type: PATCH_PROJECT_REQUEST,
+    payload,
+  };
+};
 
-
-
-
-
+const patchProjectSuccess = (payload) => {
+  return {
+    type: PATCH_PROJECT_SUCCESS,
+    payload,
+  };
+};
+const patchProjectFailure = (payload) => {
+  return {
+    type: PATCH_PROJECT_FAILURE,
+    payload,
+  };
+};
 
 const getProjets = (payload) => (dispatch) => {
   dispatch(getProjectRequest());
@@ -89,12 +104,9 @@ const getProjets = (payload) => (dispatch) => {
     .catch((err) => dispatch(getProjectFailure(err)));
 };
 
-
-
 const addProjects = (payload) => (dispatch) => {
-  
   dispatch(addProjectRequest());
- return  axios
+  return axios
     .post("http://localhost:8080/project/create", payload)
     .then((res) => {
       dispatch(addProjectSuccess());
@@ -103,16 +115,30 @@ const addProjects = (payload) => (dispatch) => {
     .catch((err) => dispatch(addProjectFailure()));
 };
 
-
 const deleteProjtes = (payload) => (dispatch) => {
   console.log(payload);
   dispatch(deleteProjectRequest());
-   return axios.delete(`http://localhost:8080/project/delete/${payload}`).then(res => {
-    dispatch(deleteProjectSuccess())
-    console.log(res.data)
-  }).catch((err) => {
-    dispatch(deleteProjectFailure());
-  });
-}
+  return axios
+    .delete(`http://localhost:8080/project/delete/${payload}`)
+    .then((res) => {
+      dispatch(deleteProjectSuccess());
+      console.log(res.data);
+    })
+    .catch((err) => {
+      dispatch(deleteProjectFailure());
+    });
+};
 
-export { addProjects, getProjets, deleteProjtes };
+const editProject = (payload) => (dispatch) => {
+  dispatch(patchProjectRequest());
+  return axios
+    .patch(`http://localhost:8080/project/edit/${payload.id}`, payload.body)
+    .then((res) => {
+      dispatch(patchProjectSuccess());
+    })
+    .catch((err) => {
+      dispatch(patchProjectFailure());
+    });
+};
+
+export { addProjects, editProject,getProjets, deleteProjtes };

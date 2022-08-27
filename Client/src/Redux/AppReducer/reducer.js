@@ -8,6 +8,9 @@ import {
   GET_PROJECT_FAILURE,
   GET_PROJECT_REQUEST,
   GET_PROJECT_SUCCESS,
+  PATCH_PROJECT_FAILURE,
+  PATCH_PROJECT_REQUEST,
+  PATCH_PROJECT_SUCCESS,
 } from "./actionType";
 
 const initialState = {
@@ -46,6 +49,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state, isError:true, isLoading:false
       }
+    case PATCH_PROJECT_REQUEST:
+      return { ...state, isLoading: true };
+    case PATCH_PROJECT_SUCCESS:
+      return { ...state, isLoading: false, isError:false };
+    case PATCH_PROJECT_FAILURE:
+      return {...state, isError:true}
     default:
       return state;
   }
