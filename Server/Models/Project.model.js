@@ -5,6 +5,7 @@ const projectSchema = mongoose.Schema({
   clientname: { type: String, required: true },
   projectStatus: { type: String, default:"Pending" },
   startTime: { type: Date},
+  pColor:{type:String},
    userId: { type: String}
 });
 

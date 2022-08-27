@@ -9,7 +9,8 @@ import { v4 as uuid } from "uuid";
 
 const Project = () => {
   const projects = useSelector((store) => store.AppReducer.projectName);
-  console.log(projects);
+
+
   const dispatch = useDispatch();
 
   useEffect(() => {

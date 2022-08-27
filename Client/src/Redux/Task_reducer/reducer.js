@@ -11,7 +11,9 @@ export const reducer = (state = initialState, { type, payload }) => {
  
   //console.log(state.project)
   switch (type) {
-case types.GET_TASK_PROJECT: return {state:payload}
+case types.GET_TASK_PROJECT: 
+console.log(" get task " ,payload)
+return {...state,project:payload}
 
     case types.ADD_NEW_PROJECT:
       let newprojectArr = [...state.project, payload];
