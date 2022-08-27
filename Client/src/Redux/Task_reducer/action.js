@@ -3,7 +3,7 @@ import * as types from "./actiontypes";
 
 export const addNewProject = (params) => (dispatch) => {
   console.log(params);
-  axios
+ return axios
     .post("http://localhost:8080/task/create", params)
     .then((res) => {
       dispatch({ type: types.ADD_NEW_PROJECT, payload: params });
@@ -15,12 +15,15 @@ export const addNewProject = (params) => (dispatch) => {
 };
 
 export const getTaskProject = () => (dispatch) => {
-  axios
+ axios
     .get("http://localhost:8080/task")
     .then((res) =>
+    {console.log("getTask",res.data)
+
       dispatch({ type: types.GET_TASK_PROJECT, payload: res.data })
-    )
-    .catch((err) => console.log(err));
+    })
+      .catch((err) => console.log(err)
+      )
 };
 
 export const editProject = (refNO, UpdatedTask, projectId) => (dispatch) => {

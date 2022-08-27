@@ -7,17 +7,18 @@ const projectController = express.Router();
 let startTime = new Date();
 
 const getRandomColor = () => {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
+  var letters = "0123456789ABCDEF";
+  var color = "#";
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
-}
-let pColor = getRandomColor()
+};
+
 projectController.post("/create", async (req, res) => {
+  let pColor = getRandomColor();
   const { projectname, clientname, projectStatus, userId } = req.body;
-   console.log(projectname,clientname,projectStatus,userId)
+  console.log(projectname, clientname, projectStatus, userId);
   const new_project = new ProjectModel({
     projectname,
     clientname,
@@ -58,7 +59,7 @@ projectController.patch("/edit/:projectId", async (req, res) => {
 
 projectController.delete("/delete/:projectId", async (req, res) => {
   const { projectId } = req.params;
-  
+
   const { userId } = req.body;
   const project = await ProjectModel.findOne({ _id: projectId });
 

@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Day from "./Day";
 
-import { SimpleGrid, Container, Box, Text } from "@chakra-ui/react";
+import { SimpleGrid, Container, Box, Text, Flex } from "@chakra-ui/react";
 
 import GlobalContext from "../../context/GlobalContext";
 import { getMonth } from "../../utils/utils";
 import dayjs from "dayjs";
 import CalenderHeader from "./CalenderHeader";
+import ProjetcSideBar from "../ProjetcSideBar";
 
 const DayCalender = () => {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -34,6 +35,10 @@ const DayCalender = () => {
 
   return (
     <>
+    <Flex>
+    <ProjetcSideBar />
+      <Box>
+
       <CalenderHeader />
       <Box w="98%" m="auto" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
         <Box>
@@ -53,9 +58,9 @@ const DayCalender = () => {
                           wid={"20rem"}
                           day={day}
                           key={idx}
-                        />
-                      );
-                    } else {
+                          />
+                          );
+                        } else {
                       return null;
                     }
                   })}
@@ -67,6 +72,8 @@ const DayCalender = () => {
           })}
         </Box>
       </Box>
+          </Box>
+          </Flex>
     </>
   );
 };

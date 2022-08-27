@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Day from "./Day";
 
-import { SimpleGrid, Container, Box, Text  } from "@chakra-ui/react";
+import { SimpleGrid, Container, Box, Text, Flex  } from "@chakra-ui/react";
 
 import GlobalContext from "../../context/GlobalContext";
 import { getMonth } from "../../utils/utils";
 import dayjs from "dayjs";
 import CalenderHeader from "./CalenderHeader";
+import ProjetcSideBar from "../ProjetcSideBar";
 const WeekCalender = () => {
 
   const [currentMonth, setCurrentMonth] = useState(getMonth());
@@ -36,7 +37,11 @@ const currentWeek = useRef()
 
   return (
     <>
+    <Flex>
+    <ProjetcSideBar />
+<Box>
     <CalenderHeader/>
+
     <Box w="98%" m="auto" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
       <Box>
         {currentMonth.map((row, i) => {
@@ -46,10 +51,10 @@ const currentWeek = useRef()
               <SimpleGrid h="42rem"    columns={7} key={i}>
                 {row.map((day, idx) => (
                  
- 
+                  
                   <Day  day={day} key={idx} rowIdx={currentWeek.current} />
-                     
-                ))}
+                  
+                  ))}
               </SimpleGrid>
             );
           } else {
@@ -58,6 +63,8 @@ const currentWeek = useRef()
         })}
       </Box>
     </Box>
+  </Box>
+        </Flex>
                 </>
   );
 };
