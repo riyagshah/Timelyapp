@@ -12,14 +12,13 @@ import {
 
 import React from "react";
 import { Link } from "react-router-dom";
-
+import styles from "./Homepage.module.css";
 import img1 from "../Images/img1.jpg";
 import img2 from "../Images/img2.jpg";
 import Footer1 from "../Footer/Footer1";
 import Footerlast from "../Footer/Footerlast";
-
 import { useNavigate } from "react-router-dom";
-import '../../App.css'
+
 
 const HomePart1 = () => {
   const navigate = useNavigate();
