@@ -9,12 +9,14 @@ taskController.post("/create", async (req, res) => {
   const { title, date, refNO, project } = req.body;
   const Mainproject = await ProjectModel.findOne({ projectname: project });
   const projectId = Mainproject._id;
+  const pColor= Mainproject.pColor
   const new_task = new TaskModel({
     title,
     project,
     date,
     projectId,
     refNO,
+    pColor
   });
   await new_task.save();
   res.send({ message: "Task has been created", new_task });

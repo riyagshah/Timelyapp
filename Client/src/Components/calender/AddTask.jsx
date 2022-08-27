@@ -18,6 +18,7 @@ import {
   deleteProject,
   editProject,
   addNewProject,
+  getTaskProject,
 } from "../../Redux/Task_reducer/action";
 import { v4 as uuid } from "uuid";
 
@@ -39,8 +40,8 @@ function AddTask({ time, projectArray }) {
         refNO: uuid(),
       };
       //   console.log(payload)
-
-      dispatch(addNewProject(payload));
+ 
+      dispatch(addNewProject(payload)).then((res)=>{dispatch(getTaskProject())})
     }
   };
 

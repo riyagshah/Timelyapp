@@ -19,14 +19,16 @@ import {
   deleteProject,
   editProject,
   addNewProject,
+  getTaskProject,
 } from "../../Redux/Task_reducer/action";
 
-const TaskModel = ({ isOpen, onClose, time, title, project, refNO ,projectArray,projectId}) => {
+const TaskModel = ({ isOpen, onClose, time, title, project, refNO ,projectArray,projectId,pColor}) => {
   const dispatch = useDispatch();
 
   const [date, setDate] = useState(time);
   const [text, setText] = useState(title);
   const [selectProject, setSelectProject] = useState(project);
+  const [color,setColor] = useState(pColor)
  
 const [refId,setrefId] =  useState(refNO)
   const handleSubmit = () => {
@@ -37,10 +39,11 @@ const [refId,setrefId] =  useState(refNO)
         project: selectProject,
         date: date,
         refNO:refId,
-        projectId
+        projectId,
+        pColor:color
       };
 // console.log("editbuttnon", refId)
-      dispatch(editProject(refId, payload,projectId));
+      dispatch(editProject(refId, payload,projectId)) 
     }
   };
   const handleDelte = () => { 
@@ -48,6 +51,15 @@ const [refId,setrefId] =  useState(refNO)
     alert("Project Deleted");
   };
 
+  const handleChange=(e)=>{
+ const {value}=e.target
+  let [{projectname,pColor}] = projectArray.filter((e)=>e.projectname === value)
+//  console.log(projectname)
+ setSelectProject(projectname)
+ setColor(pColor)
+ 
+
+  }
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -58,7 +70,7 @@ const [refId,setrefId] =  useState(refNO)
 
         <ModalBody pb={10}>
         <Select
-              onChange={(e) => setSelectProject(e.target.value)}
+              onChange={ handleChange }
               pb={3}
               placeholder="Select Project"
              defaultValue={project}

@@ -5,7 +5,8 @@ const taskSchema = mongoose.Schema({
   project:{type:String},
   date:{type:String},
   projectId: { type: String},
-  refNO:{type:String}
+  refNO:{type:String},
+  pColor:{type:String}
 });
 
 const taskModel = mongoose.model("task", taskSchema);
