@@ -4,6 +4,7 @@ import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { deleteProjtes, getProjets } from "../Redux/AppReducer/action";
 import { BsFillBagFill } from "react-icons/bs";
+import { EditProjects } from "./EditProjects";
 
 const ProjectCard = ({ projects }) => {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const ProjectCard = ({ projects }) => {
               <label>{projects.projectStatus}</label>
             </Box>
 
-            <p onClick={handleEdit}>Edit</p>
+            <p onClick={handleEdit}><EditProjects project={projects} /></p>
             <p onClick={() => handleClick(projects._id)}>Delete</p>
           </Flex>
         </MenuList>
