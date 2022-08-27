@@ -25,7 +25,7 @@ const Calender = () => {
     <>
      <Flex>
      <ProjetcSideBar />
-     <Box>
+     <Box   ml="7rem"  w="90%" >
 
      <CalenderHeader/>
       <Month month={currentMonth}/>

@@ -7,7 +7,7 @@ import { SimpleGrid,Container,Box,Text} from '@chakra-ui/react'
 const Month = ({month}) => {
 //  console.log(month)
   return (
-    <Box w="98%" m="auto" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;" >
+    <Box    w="100%" m="auto" boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;" >
     
    < Box >
    {month.map((row, i) => (

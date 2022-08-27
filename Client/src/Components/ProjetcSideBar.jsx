@@ -21,7 +21,7 @@ const ProjetcSideBar = () => {
       bg="#44505e"
       gap="40px"
       alignItems="center"
-    position="relative"
+    position="fixed"
     >
       <Stack marginTop="50px">
         <Image src="https://ik.imagekit.io/5uw6vtpfr/6257f2528a3995c3118af6e9_Type_Symbol__On-surface_Light__ktqTc59U.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1661587188635" />

@@ -4,46 +4,44 @@ import {
   Search2Icon,
   SunIcon,
   AddIcon,
-  TriangleDownIcon
+  TriangleDownIcon,
 } from "@chakra-ui/icons";
 import { Box, Button, Flex, Heading, Center, Text } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../../context/GlobalContext";
-import { Link } from "react-router-dom";
- 
- 
+import { Link, useNavigate } from "react-router-dom";
+
 import { BiTask } from "react-icons/bi";
 
 import { FiSmile } from "react-icons/fi";
 import { getTaskProject } from "../../Redux/Task_reducer/action";
 import { useDispatch } from "react-redux";
+
 const CalenderHeader = () => {
-
-
   const [isDay, setIsDay] = useState(false);
   const [isWeek, setIsWeek] = useState(false);
   const [isMonth, setIsMonth] = useState(false);
+  const navigate = useNavigate();
 
   const handleClickDay = () => {
-    setIsMonth(false)  
+    setIsMonth(false);
     setIsDay(true);
     setIsWeek(false);
+    navigate("/day");
   };
- const handleClickWeek = () => {
-  setIsMonth(false)  
-  setIsDay(false);
-  setIsWeek(true);
- };
-const handleClickMonth = () => {
-    
-  setIsMonth(true)
-  setIsDay(false);
-  setIsWeek(false);
-
-
+  const handleClickWeek = () => {
+    setIsMonth(false);
+    setIsDay(false);
+    setIsWeek(true);
+    navigate("/week");
   };
-
+  const handleClickMonth = () => {
+    setIsMonth(true);
+    setIsDay(false);
+    setIsWeek(false);
+    navigate("/month");
+  };
 
   return (
     <Box>
@@ -52,52 +50,79 @@ const handleClickMonth = () => {
         padding={"15px 5px"}
         justifyContent="space-between"
       >
-        <Box display={"flex"}   w="15rem" >
+        <Box display={"flex"} w="15rem">
+          <Button
+            bg="white"
+            borderRadius={"none"}
+            style={{
+              backgroundColor: isDay ? "#44505e" : "",
+              color: isDay ? "white" : "",
+            }}
+            onClick={handleClickDay}
+            variant="outline"
+          >
+            day
+          </Button>
 
-        <Link to="/day">
-          <Button bg="white" borderRadius={"none"}  style={{
-          backgroundColor: isDay ? '#44505e' : '',
-          color:isDay? "white" :"",
-          
-        }} onClick={handleClickDay} variant='outline'>day</Button>
-        </Link>
-        <Link to="/week">
-          <Button bg="white" borderRadius={"none"} style={{
-          backgroundColor: isWeek ? '#44505e' : '',
-          color:isWeek? "white" :"",
-          
-        }}  onClick={handleClickWeek} variant='outline'>week</Button>
-        </Link>
-        <Link to="/month">
-          <Button bg="white" borderRadius={"none"} style={{
-          backgroundColor: isMonth ? '#44505e' : '',
-          color:isMonth? "white" :"",
-          
-        }}  onClick={handleClickMonth}  variant='outline'>month</Button>
-        </Link>
+          <Button
+            bg="white"
+            borderRadius={"none"}
+            style={{
+              backgroundColor: isWeek ? "#44505e" : "",
+              color: isWeek ? "white" : "",
+            }}
+            onClick={handleClickWeek}
+            variant="outline"
+          >
+            week
+          </Button>
+
+          <Button
+            bg="white"
+            borderRadius={"none"}
+            style={{
+              backgroundColor: isMonth ? "#44505e" : "",
+              color: isMonth ? "white" : "",
+            }}
+            onClick={handleClickMonth}
+            variant="outline"
+          >
+            month
+          </Button>
         </Box>
 
-        
         <Box display={"flex"} justifyContent={"space-evenly"} w="30rem">
-          
-
           <Box display={"flex"}>
-
-          <Button  borderRadius={"none"} bg="#44505e" variant="none" color={"white"}>
-            Solo
-          </Button>
-          <Button bg="white" borderRadius={"none"} border={"1px solid grey"}>
-Company
-          </Button>
+            <Button
+              borderRadius={"none"}
+              bg="#44505e"
+              variant="none"
+              color={"white"}
+            >
+              Solo
+            </Button>
+            <Button bg="white" borderRadius={"none"} border={"1px solid grey"}>
+              Company
+            </Button>
           </Box>
-          <Button bg="white" borderRadius={"none"} colorScheme={"black"} variant="outline">
-            <FiSmile/>
+          <Button
+            bg="white"
+            borderRadius={"none"}
+            colorScheme={"black"}
+            variant="outline"
+          >
+            <FiSmile />
             Me
-            <TriangleDownIcon/>
+            <TriangleDownIcon />
           </Button>
-          <Button  bg="white" borderRadius={"none"} colorScheme={"black"} variant="outline">
-            <BiTask/>
-        <TriangleDownIcon/>
+          <Button
+            bg="white"
+            borderRadius={"none"}
+            colorScheme={"black"}
+            variant="outline"
+          >
+            <BiTask />
+            <TriangleDownIcon />
           </Button>
         </Box>
       </Flex>
