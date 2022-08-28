@@ -90,7 +90,7 @@ dispatch(getTaskProject())
 </Box>:  <Box    onClick={() => {
         // console.log(day.format("MMM-DD"))
         // setDayschdule(`${day.format("DD-MMMM-YYYY")}`);
-      }}>   <AddTask wid={"39rem"} projectArray={projectArray} time={`${day.format("YYYY-MM-DD")}`} />
+      }}>   <AddTask wid={"34rem"} projectArray={projectArray} time={`${day.format("YYYY-MM-DD")}`} />
 
 </Box>
     } 
