@@ -13,6 +13,10 @@ Welcome, we're are team “Timely”, and this Readme contains details about our
 ![css](https://img.shields.io/badge/CSS-%2320232a.svg?style=for-the-badge&logo=CSS&logoColor=%2361DAFB)
 ![js](https://img.shields.io/badge/JS-%2320232a.svg?style=for-the-badge&logo=CSS&logoColor=%2361DAFB)
 
+
+## Deployed Link:https://timely-clone-three.vercel.app
+
+
 ## Pages & Features
 
 - Homepage
@@ -20,6 +24,14 @@ Welcome, we're are team “Timely”, and this Readme contains details about our
 - Sign-up & Sign-in Page
 - Project Management
 - Task Mangement
+![image](https://user-images.githubusercontent.com/101579810/187074965-7c4fc79b-2c4e-453b-bbcb-047833568c2f.png)
+![image](https://user-images.githubusercontent.com/101579810/187074978-91f95b17-1646-4a7a-b600-4438ec0b2ca8.png)
+![image](https://user-images.githubusercontent.com/101579810/187074992-9b9a664a-2f2c-445a-b413-315ce6f4bf05.png)
+![image](https://user-images.githubusercontent.com/101579810/187075015-df6b53a1-45c5-4998-9751-bdc0aadb881e.png)
+![image](https://user-images.githubusercontent.com/101579810/187075053-1e7bc7ef-1ee2-4017-abfd-946a11be8cfb.png)
+![image](https://user-images.githubusercontent.com/101579810/187075108-5bc97627-3606-4a8f-8435-6e86cd34e747.png)
+
+
 
 
 
