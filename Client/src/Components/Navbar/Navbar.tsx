@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
-import { TriangleDownIcon } from "@chakra-ui/icons";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Flex,
@@ -15,7 +15,6 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
@@ -53,7 +52,11 @@ export default function WithSubnavigation() {
           <IconButton
             onClick={onToggle}
             icon={
-              isOpen ? <CloseIcon w={3} h={3} color={'white'}/> : <HamburgerIcon w={5} h={5} color={'white'}/>
+              isOpen ? (
+                <CloseIcon w={3} h={3} color={"white"} />
+              ) : (
+                <HamburgerIcon w={5} h={5} color={"white"} />
+              )
             }
             variant={"ghost"}
             aria-label={"Toggle Navigation"}
@@ -64,8 +67,10 @@ export default function WithSubnavigation() {
             width={{ md: 40 }}
             w={"84px"}
             h={"55px"}
+            onClick={() => navigate("/")}
             src="https://assets-global.website-files.com/6257f2528a39952d4e8af286/6257f2528a39955aef8af720_timely-new-logo.svg"
           />
+
           <Image
             mt={"35px"}
             ml={"5px"}
@@ -80,19 +85,19 @@ export default function WithSubnavigation() {
           </Flex>
         </Flex>
         <Button
-      mr={"20px"}
-        bg={"white"}
-        height="40px"
-        width="230px"
-        as={"a"}
-        fontSize={"sm"}
-        color={"black"}
-        fontWeight={500}
-        variant={"solid"}
-        onClick={() => navigate("/signup")}
-      >
-        Start 14-day free trial
-      </Button>
+          mr={"20px"}
+          bg={"white"}
+          height="40px"
+          width="230px"
+          as={"a"}
+          fontSize={"sm"}
+          color={"black"}
+          fontWeight={500}
+          variant={"solid"}
+          onClick={() => navigate("/signup")}
+        >
+          Start 14-day free trial
+        </Button>
         {/* <Stack
           mt={"15px"}
           flex={{ base: 1, md: 0 }}
@@ -100,11 +105,11 @@ export default function WithSubnavigation() {
           direction={"row"}
           spacing={4}
         > */}
-          <Image
-            height="40px"
-            width="100px"
-            src="https://assets-global.website-files.com/6257f2528a39952d4e8af286/6257f2528a399514908af72d_made-by-white.svg"
-          />
+        <Image
+          height="40px"
+          width="100px"
+          src="https://assets-global.website-files.com/6257f2528a39952d4e8af286/6257f2528a399514908af72d_made-by-white.svg"
+        />
         {/* </Stack> */}
       </Flex>
 
@@ -121,7 +126,14 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
   const navigate = useNavigate();
   return (
-    <Stack direction={"row"} w={"750px"} h={"40px"}spacing={4} ml={"80px"} mt={"25px"}>
+    <Stack
+      direction={"row"}
+      w={"750px"}
+      h={"40px"}
+      spacing={4}
+      ml={"80px"}
+      mt={"25px"}
+    >
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
@@ -173,12 +185,25 @@ const DesktopNav = () => {
         color={"white"}
         fontWeight={500}
         variant={"link"}
-        onClick={()=> navigate("/login")}
+        onClick={() => navigate("/sales")}
+      >
+        <ArrowRightIcon h={"11px"} mr={"3px"} />
+        Talk to sales
+      </Button>
+      <Button
+        pb={"15px"}
+        height="40px"
+        width="80px"
+        as={"a"}
+        fontSize={"sm"}
+        color={"white"}
+        fontWeight={500}
+        variant={"link"}
+        onClick={() => navigate("/login")}
       >
         <ArrowRightIcon h={"11px"} mr={"3px"} />
         Log in
       </Button>
-      
     </Stack>
   );
 };
@@ -405,10 +430,6 @@ const NAV_ITEMS: Array<NavItem> = [
         href: "#",
       },
     ],
-  },
-  {
-    label: "Talk to sales",
-    href: "#",
   },
   // {
   //   label: "Log in",

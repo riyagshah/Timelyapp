@@ -23,7 +23,9 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import emailjs from '@emailjs/browser';
-
+import Navbar from "../Components/Navbar/Navbar.tsx"
+import Footerlast from "../Components/Footer/Footerlast";
+import Footer1 from "../Components/Footer/Footer1";
 const Sales = () => {
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
@@ -38,7 +40,9 @@ const Sales = () => {
 
 
   return (
+    
     <Box>
+      <Navbar/>
       <VStack spacing="10px">
         <Heading as="h1" size="3xl" color="#001141;">
           Talk to our Sales team
@@ -630,6 +634,8 @@ const Sales = () => {
           </Accordion>
         </VStack>
       </Box>
+      <Footer1/>
+      <Footerlast/>
     </Box>
   );
 };
