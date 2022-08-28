@@ -67,7 +67,7 @@ projectController.delete("/delete/:projectId", async (req, res) => {
 
   if (project.userId === userId) {
     await ProjectModel.findOneAndDelete({ _id: projectId });
-   
+   await taskModel.deleteMany({projectId:projectId})
     return res.send({ message: "Project has been deleted successfully!" });
   } else {
     return res.send("you are not authorised to do it");
