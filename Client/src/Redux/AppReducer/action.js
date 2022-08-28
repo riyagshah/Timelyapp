@@ -99,7 +99,7 @@ const getProjets = (payload) => (dispatch) => {
   dispatch(getProjectRequest());
 
   axios
-    .get("http://localhost:8080/project")
+    .get("https://whispering-thicket-24456.herokuapp.com/project")
     .then((res) => dispatch(getProjectSuccess(res.data)))
     .catch((err) => dispatch(getProjectFailure(err)));
 };
@@ -107,7 +107,10 @@ const getProjets = (payload) => (dispatch) => {
 const addProjects = (payload) => (dispatch) => {
   dispatch(addProjectRequest());
   return axios
-    .post("http://localhost:8080/project/create", payload)
+    .post(
+      "https://whispering-thicket-24456.herokuapp.com/project/create",
+      payload
+    )
     .then((res) => {
       dispatch(addProjectSuccess());
       console.log(res.data);
@@ -119,7 +122,9 @@ const deleteProjtes = (payload) => (dispatch) => {
   console.log(payload);
   dispatch(deleteProjectRequest());
   return axios
-    .delete(`http://localhost:8080/project/delete/${payload}`)
+    .delete(
+      `https://whispering-thicket-24456.herokuapp.com/project/delete/${payload}`
+    )
     .then((res) => {
       dispatch(deleteProjectSuccess());
       console.log(res.data);
@@ -132,12 +137,16 @@ const deleteProjtes = (payload) => (dispatch) => {
 const editProject = (payload) => (dispatch) => {
   dispatch(patchProjectRequest());
   return axios
-    .patch(`http://localhost:8080/project/edit/${payload.id}`, payload.body, {
-      headers: {
-        "Content-Type": "application/json",
-        // authentication: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    .patch(
+      `https://whispering-thicket-24456.herokuapp.com/project/edit/${payload.id}`,
+      payload.body,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          // authentication: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
     .then((res) => {
       dispatch(patchProjectSuccess());
     })

@@ -3,24 +3,36 @@ import {
   Box,
   Heading,
   Text,
-  
+  FormControl,
+  FormLabel,
   Input,
   VStack,
-  
+  Spacer,
   Image,
   useMediaQuery,
   Button,
-} from "@chakra-ui/react";
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  useDisclosure
  
-import React, { useState } from "react";
+} from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState,useRef } from "react";
 import axios from "axios";
 
 const Signup = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const cancelRef = React.useRef()
   const [form, setForm] = useState({
     email: "",
     name: "",
     password: "",
   });
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -33,9 +45,9 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/user/signup",form)
+      .post("https://whispering-thicket-24456.herokuapp.com/user/signup", form)
       .then((res) => {
-        console.log(res);
+        navigate("/login")
       })
       .catch((err) => {
         console.log(err);
@@ -122,33 +134,41 @@ const Signup = () => {
             </form>
           </VStack> */}
           <form onSubmit={handleSubmit}>
-              <VStack spacing="25px">
-              <Input
-                placeholder="Work Email"
-                size="lg"
-                type="text"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-              />
-              <Input
-                placeholder="Full name"
-                size="lg"
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-              />
-              <Input
-                placeholder="Password"
-                size="lg"
-                type="text"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-              />
+            <VStack spacing="25px">
+              <FormControl isRequired>
+                <Input
+                  placeholder="Work Email"
+                  size="lg"
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                />
+              </FormControl>
+
+              <FormControl isRequired>
+                <Input
+                  placeholder="Full name"
+                  size="lg"
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl isRequired>
+                <Input
+                  placeholder="Password"
+                  size="lg"
+                  type="password"
+                  name="password"
+                  value={form.password}
+                  onChange={handleChange}
+                />
+              </FormControl>
               <Text>By signing up you agree to the Terms of Service.</Text>
               <Button
+              onClick={onOpen}
                 type="submit"
                 size="lg"
                 height="65px"
@@ -156,10 +176,37 @@ const Signup = () => {
               >
                 Start free 14 day trail
               </Button>
-              </VStack>
+            </VStack>
           </form>
         </Box>
       </Flex>
+      <AlertDialog
+        isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+              Signup Success
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+             Thank you for Subscribing with us
+            </AlertDialogBody>
+
+            {/* <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose}>
+                Cancel
+              </Button>
+              <Button colorScheme='red' onClick={onClose} ml={3}>
+                Delete
+              </Button>
+            </AlertDialogFooter> */}
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
+      
     </Box>
   );
 };

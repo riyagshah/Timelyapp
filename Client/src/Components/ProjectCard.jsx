@@ -45,9 +45,7 @@ const ProjectCard = ({ projects }) => {
   
     
    
-    dispatch(editProject(payload)).then((res) => {
-      dispatch(getProjets());
-    })
+    dispatch(editProject(payload)).then((res) => dispatch(getProjets()))
   };
   // console.log(projects)
 

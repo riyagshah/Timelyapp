@@ -31,8 +31,8 @@ const Login = () => {
 
 
   const [loginCred,setLoginCred] = useState({
-    email: "gaurav@gmail.com",
-    password: "gaurav123"
+    email: "",
+    password: ""
   });
 
   const handleChange = (e)=>{
@@ -134,8 +134,8 @@ const Login = () => {
 
       <form action="" onSubmit={handleSubmit}>
           <VStack spacing="25px">
-              <Input placeholder="Email" name="email" value={loginCred.email} onChange={handleChange} ></Input>
-              <Input placeholder="Password" name="password" value={loginCred.password} onChange={handleChange}></Input>
+              <Input type="email" required placeholder="Email" name="email" value={loginCred.email} onChange={handleChange} ></Input>
+              <Input type="password" required placeholder="Password" name="password" value={loginCred.password} onChange={handleChange}></Input>
               <Button type="submit" size="lg" height="65px" width={isLargerThan768 ? "600px" : "350px"}>Login</Button> 
           </VStack>
        

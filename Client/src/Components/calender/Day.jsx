@@ -25,7 +25,7 @@ const dispatch = useDispatch()
   useEffect(()=>{
 
     
-      axios.get("http://localhost:8080/project")
+      axios.get("https://whispering-thicket-24456.herokuapp.com/project")
       .then((res)=>  setProjectArray(res.data))
       .catch((err)=>console.log(err))
    
