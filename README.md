@@ -29,6 +29,8 @@ Welcome, we're are team “Timely”, and this Readme contains details about our
 ![image](https://user-images.githubusercontent.com/101579810/187074992-9b9a664a-2f2c-445a-b413-315ce6f4bf05.png)
 ![image](https://user-images.githubusercontent.com/101579810/187075015-df6b53a1-45c5-4998-9751-bdc0aadb881e.png)
 ![image](https://user-images.githubusercontent.com/101579810/187075053-1e7bc7ef-1ee2-4017-abfd-946a11be8cfb.png)
+![image](https://user-images.githubusercontent.com/101579810/187075108-5bc97627-3606-4a8f-8435-6e86cd34e747.png)
+
 
 
 
