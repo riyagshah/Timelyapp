@@ -3,16 +3,15 @@ import {
   Box,
   Heading,
   Text,
-  FormControl,
-  FormLabel,
+  
   Input,
   VStack,
-  Spacer,
+  
   Image,
   useMediaQuery,
   Button,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+ 
 import React, { useState } from "react";
 import axios from "axios";
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Day from './Day'
  
-import { SimpleGrid,Container,Box,Text} from '@chakra-ui/react'
+import { SimpleGrid, Box } from '@chakra-ui/react'
  
 
 const Month = ({month}) => {

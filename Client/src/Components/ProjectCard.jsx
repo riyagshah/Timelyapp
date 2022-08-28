@@ -1,6 +1,6 @@
-import { Box, Flex, Input, Stack, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import { Box, Flex,   Stack, Text } from "@chakra-ui/react";
+import React  from "react";
+import { Menu, MenuButton, MenuList } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import {
   deleteProjtes,
@@ -12,11 +12,11 @@ import { EditProjects } from "./EditProjects";
  
 
 const ProjectCard = ({ projects }) => {
-  const [status, setStatus] = useState("");
+   
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
-    console.log("delete:", id);
+    // console.log("delete:", id);
     dispatch(deleteProjtes(id)).then((res) => {
       dispatch(getProjets());
     });
@@ -24,8 +24,8 @@ const ProjectCard = ({ projects }) => {
   };
 
   const handleStatus = (e, id) => {
-    console.log(e.target.checked, id);
-    console.log(e.target.defaultChecked);
+    // console.log(e.target.checked, id);
+    // console.log(e.target.defaultChecked);
     if (e.target.defaultChecked) {
       var payload = {
         id: id,
@@ -35,7 +35,7 @@ const ProjectCard = ({ projects }) => {
       };
    }
     else {
-       var payload = {
+         payload = {
          id: id,
          body: {
            projectStatus: "Complete",

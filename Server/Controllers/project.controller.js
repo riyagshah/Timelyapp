@@ -19,7 +19,7 @@ const getRandomColor = () => {
 projectController.post("/create", async (req, res) => {
   let pColor = getRandomColor();
   const { projectname, clientname, projectStatus, userId } = req.body;
-  console.log(projectname, clientname, projectStatus, userId);
+  // console.log(projectname, clientname, projectStatus, userId);
   const new_project = new ProjectModel({
     projectname,
     clientname,
@@ -40,7 +40,7 @@ projectController.get("/", async (req, res) => {
 
 projectController.patch("/edit/:projectId", async (req, res) => {
   const { projectId } = req.params;
-  console.log(projectId)
+  // console.log(projectId)
   const { userId } = req.body;
   const project = await ProjectModel.findOne({ _id: projectId });
 

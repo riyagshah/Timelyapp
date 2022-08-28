@@ -5,21 +5,19 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
+ 
   Button,
   Input,
   Select,
-  Text,
-  Spacer,
+  
 } from "@chakra-ui/react";
-import { useState, useContext, useRef } from "react";
+import { useState } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+import {   useDispatch } from "react-redux";
 import {
   deleteProject,
   editProject,
-  addNewProject,
-  getTaskProject,
+ 
 } from "../../Redux/Task_reducer/action";
 
 const TaskModel = ({ isOpen, onClose, time, title, project, refNO ,projectArray,projectId,pColor}) => {
@@ -30,7 +28,7 @@ const TaskModel = ({ isOpen, onClose, time, title, project, refNO ,projectArray,
   const [selectProject, setSelectProject] = useState(project);
   const [color,setColor] = useState(pColor)
  
-const [refId,setrefId] =  useState(refNO)
+const [refId] =  useState(refNO)
   const handleSubmit = () => {
     // console.log(refId)
     if (text) {

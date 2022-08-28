@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Day from "./Day";
 
-import { SimpleGrid, Container, Box, Text, Flex ,Image} from "@chakra-ui/react";
+import { SimpleGrid,  Box,  Flex ,Image} from "@chakra-ui/react";
 
 import GlobalContext from "../../context/GlobalContext";
 import { getMonth } from "../../utils/utils";
@@ -11,7 +11,7 @@ import ProjetcSideBar from "../ProjetcSideBar";
 
 const DayCalender = () => {
   const [currentMonth, setCurrentMonth] = useState(getMonth());
-  const { monthIndex, showEventModal } = useContext(GlobalContext);
+  const { monthIndex } = useContext(GlobalContext);
   const currentWeek = useRef();
   useEffect(() => {
     setCurrentMonth(getMonth(monthIndex));
@@ -46,7 +46,7 @@ const DayCalender = () => {
         <Box>
           {currentMonth.map((row, i) => {
             // console.log(row, i);
-            if (i == currentWeek.current) {
+            if (i === currentWeek.current) {
               return (
                 <SimpleGrid h="42rem" columns={7} key={i}>
                   {row.map((day, idx) => {

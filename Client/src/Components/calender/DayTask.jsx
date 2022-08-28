@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from "react";
-import { Box, Text, Avatar, Flex, Heading } from "@chakra-ui/react";
+import React   from "react";
+import { Box, Text,  Heading } from "@chakra-ui/react";
 
 import "./day.css";
 
 import { useDisclosure } from "@chakra-ui/react";
 import { useState } from "react";
 import TaskModel from "./EditTask";
-import axios from "axios";
+ 
  
 const DayProjects = ({ title, refNO, date, time,projectArray,project,projectId,pColor}) => {
 

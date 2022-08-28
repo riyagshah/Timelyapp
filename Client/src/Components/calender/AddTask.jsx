@@ -9,20 +9,18 @@ import {
   Button,
   Input,
   Select,
-  Text,
-  Spacer,
+  
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import {
-  deleteProject,
-  editProject,
+  
   addNewProject,
   getTaskProject,
 } from "../../Redux/Task_reducer/action";
 import { v4 as uuid } from "uuid";
 
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 function AddTask({ time, projectArray,wid="11rem" }) {
   // console.log("time", projectArray);
   const [date, setDate] = useState(time);
