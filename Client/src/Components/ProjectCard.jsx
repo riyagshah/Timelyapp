@@ -9,6 +9,7 @@ import {
 } from "../Redux/AppReducer/action";
 import { BsFillBagFill } from "react-icons/bs";
 import { EditProjects } from "./EditProjects";
+ 
 
 const ProjectCard = ({ projects }) => {
   const [status, setStatus] = useState("");
@@ -19,6 +20,7 @@ const ProjectCard = ({ projects }) => {
     dispatch(deleteProjtes(id)).then((res) => {
       dispatch(getProjets());
     });
+     
   };
 
   const handleStatus = (e, id) => {
