@@ -9,6 +9,8 @@ import {
   Button,
   Input,
   Select,
+  Alert,
+  AlertIcon,
   
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
@@ -19,7 +21,7 @@ import {
   getTaskProject,
 } from "../../Redux/Task_reducer/action";
 import { v4 as uuid } from "uuid";
-
+import { useToast } from '@chakra-ui/react'
 import {  useDispatch } from "react-redux";
 function AddTask({ time, projectArray,wid="11rem" }) {
   // console.log("time", projectArray);
@@ -27,9 +29,10 @@ function AddTask({ time, projectArray,wid="11rem" }) {
   const [text, setText] = useState("");
   const [selectProject, setSelectProject] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+ 
+  const toast = useToast()
   const dispatch = useDispatch();
-  const submitButton = () => {
+  const submitButton =  () => {
     if (text) {
       const payload = {
         title: text,
@@ -37,12 +40,24 @@ function AddTask({ time, projectArray,wid="11rem" }) {
         date: date,
         refNO: uuid(),
       };
-      //   console.log(payload)
- 
+        // console.log(payload)
+       toast({
+        title: ` ${payload.title} is Created `,
+        description: ` ${payload.project} assigned at ${payload.date} `,
+        status: 'success',
+        duration: 1000,
+        isClosable: true,
+        position: 'top',
+      })
       dispatch(addNewProject(payload)).then((res)=>{dispatch(getTaskProject())})
+    
+   
     }
+    
+  
   };
 
+   
   return (
     <>
       <Button

@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import {useDispatch} from "react-redux"
 import { addProjects, getProjets } from "../Redux/AppReducer/action";
+import { useToast } from "@chakra-ui/react";
 
 function ProjectsModal() {
     
@@ -26,12 +27,20 @@ function ProjectsModal() {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
     const dispatch = useDispatch();
-    
+    const toast = useToast();
     const handleClick = () => {
         const payload = {
             projectname: projectName,
             clientname:clientName,
         }
+        toast({
+          title: ` ${payload.title} is Changed `,
+          description: ` ${payload.project}  `,
+          status: "warning",
+          duration: 1000,
+          isClosable: true,
+          position: "top",
+        });
         dispatch(addProjects(payload)).then(res=>dispatch(getProjets()));
     }
     
