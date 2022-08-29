@@ -83,7 +83,7 @@ function AddTask({ time, projectArray,wid="11rem" }) {
           <ModalHeader>
             <Input
               onChange={(e) => setText(e.target.value)}
-              placeholder="Add a note for this work"
+              placeholder="Add a note for this work" required
             />
           </ModalHeader>
 
@@ -91,7 +91,8 @@ function AddTask({ time, projectArray,wid="11rem" }) {
             <Select
               onChange={(e) => setSelectProject(e.target.value)}
               pb={3}
-              placeholder="Select Project"
+              placeholder="Select Project" 
+              required
             >
               {projectArray.map((e) => {
                 return <option value={`${e.projectname}`}>{e.projectname}</option>;
