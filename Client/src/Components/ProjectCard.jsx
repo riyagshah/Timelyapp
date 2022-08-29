@@ -9,18 +9,26 @@ import {
 } from "../Redux/AppReducer/action";
 import { BsFillBagFill } from "react-icons/bs";
 import { EditProjects } from "./EditProjects";
- 
+import { useToast } from "@chakra-ui/react";
 
 const ProjectCard = ({ projects }) => {
    
   const dispatch = useDispatch();
-
-  const handleDelete = (id) => {
+  const toast = useToast();
+  const handleDelete = (text,id) => {
     // console.log("delete:", id);
+   
     dispatch(deleteProjtes(id)).then((res) => {
       dispatch(getProjets());
     });
-     
+    toast({
+      title: ` ${text} is deleted `,
+      description: `All Tasks will deleted   `,
+      status: "error",
+      duration: 1000,
+      isClosable: true,
+      position: "top",
+    });
   };
 
   const handleStatus = (e, id) => {
@@ -87,7 +95,7 @@ const ProjectCard = ({ projects }) => {
             <p>
               <EditProjects project={projects} />
             </p>
-            <p onClick={() => handleDelete(projects._id)}>Delete</p>
+            <p onClick={() => handleDelete(projects.projectname,projects._id)}>Delete</p>
           </Flex>
         </MenuList>
       </Menu>

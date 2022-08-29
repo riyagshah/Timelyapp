@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch } from 'react-redux';
 import { editProject, getProjets } from '../Redux/AppReducer/action';
-
+import { useToast } from "@chakra-ui/react";
 function EditProjects({ project }) {
    
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,17 +27,25 @@ function EditProjects({ project }) {
   const [projectName, setProjectName] = useState(project.projectname);  
     const [clientName, setClientName] = useState(project.clientname);
     const dispatch = useDispatch();
-
+    const toast = useToast();
  const handleEdit = (id) => {
      const payload = {
        id:id,
     body:{ projectname: projectName,
      clientname: clientName,}
      };
-     
+    
      dispatch(editProject(payload)).then(res => {
          dispatch(getProjets()) 
      })
+     toast({
+      title: ` ${payload.body.projectname} is Changed `,
+      description: ` To Client ${payload.body.clientname} `,
+      status: "warning",
+      duration: 1000,
+      isClosable: true,
+      position: "top",
+    });
 
 }
 

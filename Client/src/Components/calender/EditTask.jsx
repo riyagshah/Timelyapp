@@ -45,6 +45,8 @@ const TaskModel = ({
         pColor: color,
       };
       // console.log("editbuttnon", refId)
+    
+      dispatch(editProject(refId, payload, projectId));
       toast({
         title: ` ${payload.title} is Changed `,
         description: ` ${payload.project} assigned at ${payload.date} `,
@@ -53,10 +55,11 @@ const TaskModel = ({
         isClosable: true,
         position: "top",
       });
-      dispatch(editProject(refId, payload, projectId));
     }
   };
   const handleDelte = (text) => {
+  
+    dispatch(deleteProject(refId));
     toast({
       title: ` ${text} is deleted `,
 
@@ -65,7 +68,6 @@ const TaskModel = ({
       isClosable: true,
       position: "top",
     });
-    dispatch(deleteProject(refId));
   };
 
   const handleChange = (e) => {

@@ -33,15 +33,16 @@ function ProjectsModal() {
             projectname: projectName,
             clientname:clientName,
         }
+        
+        dispatch(addProjects(payload)).then(res=>dispatch(getProjets()));
         toast({
-          title: ` ${payload.title} is Changed `,
-          description: ` ${payload.project}  `,
-          status: "warning",
-          duration: 1000,
+          title: ` ${payload.projectname} is Created `,
+          description: `Created by ${payload.clientname}  `,
+          status: "success",
+          duration: 2000,
           isClosable: true,
           position: "top",
         });
-        dispatch(addProjects(payload)).then(res=>dispatch(getProjets()));
     }
     
  

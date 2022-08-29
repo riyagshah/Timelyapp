@@ -41,7 +41,10 @@ function AddTask({ time, projectArray,wid="11rem" }) {
         refNO: uuid(),
       };
         // console.log(payload)
-       toast({
+      
+      dispatch(addNewProject(payload)).then((res)=>{dispatch(getTaskProject())})
+    
+      toast({
         title: ` ${payload.title} is Created `,
         description: ` ${payload.project} assigned at ${payload.date} `,
         status: 'success',
@@ -49,9 +52,6 @@ function AddTask({ time, projectArray,wid="11rem" }) {
         isClosable: true,
         position: 'top',
       })
-      dispatch(addNewProject(payload)).then((res)=>{dispatch(getTaskProject())})
-    
-   
     }
     
   
