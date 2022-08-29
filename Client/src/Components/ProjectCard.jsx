@@ -1,5 +1,5 @@
-import { Box, Flex,   Stack, Text } from "@chakra-ui/react";
-import React  from "react";
+import { Box, Flex, Stack, Text } from "@chakra-ui/react";
+import React from "react";
 import { Menu, MenuButton, MenuList } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import {
@@ -12,12 +12,11 @@ import { EditProjects } from "./EditProjects";
 import { useToast } from "@chakra-ui/react";
 
 const ProjectCard = ({ projects }) => {
-   
   const dispatch = useDispatch();
   const toast = useToast();
-  const handleDelete = (text,id) => {
+  const handleDelete = (text, id) => {
     // console.log("delete:", id);
-   
+
     dispatch(deleteProjtes(id)).then((res) => {
       dispatch(getProjets());
     });
@@ -41,19 +40,24 @@ const ProjectCard = ({ projects }) => {
           projectStatus: "Pending",
         },
       };
-   }
-    else {
-         payload = {
-         id: id,
-         body: {
-           projectStatus: "Complete",
-         },
-       };
+    } else {
+      payload = {
+        id: id,
+        body: {
+          projectStatus: "Complete",
+        },
+      };
     }
-  
-    
-   
-    dispatch(editProject(payload)).then((res) => dispatch(getProjets()))
+
+    toast({
+      title: ` Status is ${payload.body.projectStatus} `,
+
+      status: "info",
+      duration: 1000,
+      isClosable: true,
+      position: "top",
+    });
+    dispatch(editProject(payload)).then((res) => dispatch(getProjets()));
   };
   // console.log(projects)
 
@@ -95,7 +99,9 @@ const ProjectCard = ({ projects }) => {
             <p>
               <EditProjects project={projects} />
             </p>
-            <p onClick={() => handleDelete(projects.projectname,projects._id)}>Delete</p>
+            <p onClick={() => handleDelete(projects.projectname, projects._id)}>
+              Delete
+            </p>
           </Flex>
         </MenuList>
       </Menu>
