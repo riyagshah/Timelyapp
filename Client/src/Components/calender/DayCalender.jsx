@@ -42,7 +42,7 @@ const DayCalender = () => {
       <CalenderHeader />
       <Flex>
 
-      <Box  w="40rem"   boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+      <Box  w="35rem"   boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;">
         <Box>
           {currentMonth.map((row, i) => {
             // console.log(row, i);
@@ -58,7 +58,7 @@ const DayCalender = () => {
                           boxShadow1={
                             "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
                           }
-                         wid={"40rem"}
+                         wid={"35rem"}
                          hei="100vh"
                           day={day}
                           key={idx}
@@ -77,7 +77,7 @@ const DayCalender = () => {
         </Box>
       </Box>
       <Box>
-       <Image   w="800px" h="760px"  src="https://i.postimg.cc/T18NpT6K/Screenshot-579.png"/>
+       <Image   w="600px" h="670px"  src="https://i.postimg.cc/T18NpT6K/Screenshot-579.png"/>
       </Box>
           </Flex>
           </Box>
