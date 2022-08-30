@@ -1,4 +1,4 @@
-import { LOGIN_ERROR, LOGIN_LOADING, LOGIN_SUCCESS} from "./actionType";
+import { LOGIN_ERROR, LOGIN_LOADING, LOGIN_SUCCESS } from "./actionType";
 
 import axios from "axios";
 
@@ -20,6 +20,8 @@ export const loginApi = (data) => (dispatch) => {
     .catch(() => {
       dispatch({ type: LOGIN_ERROR });
     });
-
 };
 
+export const handlelogout = (payload) => (dispatch) => {
+  dispatch({ type: "LOGOUT", payload });
+};

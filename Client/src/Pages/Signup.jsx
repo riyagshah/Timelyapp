@@ -15,7 +15,7 @@ import {
   Alert,
   AlertIcon,
 } from "@chakra-ui/react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
@@ -148,11 +148,12 @@ const Signup = () => {
                 size="lg"
                 type="password"
                 name="password"
-                
-                {...register("password", { required: true ,minLength:4})}
+                {...register("password", { required: true, minLength: 4 })}
               />
               {errors.password && (
-                <Text color="red">Password is required.Minimum of 4 characters required.</Text>
+                <Text color="red">
+                  Password is required.Minimum of 4 characters required.
+                </Text>
               )}
               ;<Text>By signing up you agree to the Terms of Service.</Text>
               <Button

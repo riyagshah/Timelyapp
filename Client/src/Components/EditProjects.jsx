@@ -13,6 +13,8 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Text,
+  Box,
 } from "@chakra-ui/react";
 import { useDispatch } from 'react-redux';
 import { editProject, getProjets } from '../Redux/AppReducer/action';
@@ -53,9 +55,8 @@ function EditProjects({ project }) {
 
 
   return (
-    <>
-      <p onClick={onOpen}>Edit</p>
-    
+    <Box>
+      <Text onClick={onOpen}>Edit</Text>
 
       <Modal
         initialFocusRef={initialRef}
@@ -89,14 +90,18 @@ function EditProjects({ project }) {
           </ModalBody>
 
           <ModalFooter>
-            <Button variantColor="blue" mr={3} onClick={()=>handleEdit(project._id)} >
+            <Button
+              variantColor="blue"
+              mr={3}
+              onClick={() => handleEdit(project._id)}
+            >
               Save
             </Button>
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </>
+    </Box>
   );
 }
 
