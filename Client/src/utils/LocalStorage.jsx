@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+
 
 const getLocalData = (key) => {
   if (key) {
@@ -8,7 +8,7 @@ const getLocalData = (key) => {
 };
 
 const saveLocalData = (key, value) => {
-  console.log(key, value);
+  
   if (key && value) {
     localStorage.setItem(key, value);
   }

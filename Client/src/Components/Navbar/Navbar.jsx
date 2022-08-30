@@ -1,8 +1,8 @@
 import React, { ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
-import { useDispatch, useSelector} from "react-redux";
-import {handlelogout} from "../../Redux/AuthReducer/action";
+import { useDispatch, useSelector } from "react-redux";
+import { handlelogout } from "../../Redux/AuthReducer/action";
 import {
   Box,
   Flex,
@@ -29,25 +29,21 @@ import {
 } from "@chakra-ui/icons";
 import { Image } from "@chakra-ui/react";
 
-
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
-  
-  const auth = useSelector((state) => state.AuthReducer.isAuth);
-  console.log(auth)
-  const handle=()=>{
-    if(!auth)
-    navigate("/login")
-    }
-    const handlelogout=()=>{
-// dispatch(logoutAPI());
-navigate("/login")
-    }
-  return (
 
+  const auth = useSelector((state) => state.AuthReducer.isAuth);
+
+  const handle = () => {
+    if (!auth) navigate("/login");
+  };
+  const handlelogout = () => {
+    // dispatch(logoutAPI());
+    navigate("/login");
+  };
+  return (
     <Box>
-     
       <Flex
         bg={useColorModeValue("#722FD3", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -97,7 +93,6 @@ navigate("/login")
           />
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
-         
           </Flex>
         </Flex>
         <Button
@@ -114,19 +109,12 @@ navigate("/login")
         >
           Start 14-day free trial
         </Button>
-        {/* <Stack
-          mt={"15px"}
-          flex={{ base: 1, md: 0 }}
-          justify={"flex-end"}
-          direction={"row"}
-          spacing={4}
-        > */}
+
         <Image
           height="40px"
           width="100px"
           src="https://assets-global.website-files.com/6257f2528a39952d4e8af286/6257f2528a399514908af72d_made-by-white.svg"
         />
-        {/* </Stack> */}
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -142,12 +130,9 @@ const DesktopNav = () => {
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
   const auth = useSelector((state) => state.AuthReducer.isAuth);
-  const handle=()=>{
-    if(!auth)
-    navigate("/login")
-
-    }
-    
+  const handle = () => {
+    if (!auth) navigate("/login");
+  };
 
   const navigate = useNavigate();
   return (
@@ -354,8 +339,6 @@ const MobileNavItem = ({ label, children, href }) => {
     </Stack>
   );
 };
-
-
 
 const NAV_ITEMS = [
   {
