@@ -12,7 +12,6 @@ import { EditProjects } from "./EditProjects";
 import { useToast } from "@chakra-ui/react";
 
 const ProjectCard = ({ projects }) => {
- 
   const dispatch = useDispatch();
   const toast = useToast();
   const handleDelete = (text, id) => {
@@ -97,12 +96,14 @@ const ProjectCard = ({ projects }) => {
               <label>{projects.projectStatus}</label>
             </Box>
 
-            <p>
+            <Box>
               <EditProjects project={projects} />
-            </p>
-            <p onClick={() => handleDelete(projects.projectname, projects._id)}>
+            </Box>
+            <Text
+              onClick={() => handleDelete(projects.projectname, projects._id)}
+            >
               Delete
-            </p>
+            </Text>
           </Flex>
         </MenuList>
       </Menu>

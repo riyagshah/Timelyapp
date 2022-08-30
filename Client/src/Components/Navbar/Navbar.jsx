@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
-import {handlelogout} from "../../utils/LocalStorage.jsx";
+import {handlelogout} from "../../Redux/AuthReducer/action";
 import {
   Box,
   Flex,
@@ -33,7 +33,7 @@ import { Image } from "@chakra-ui/react";
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
-  const dispatch=useDispatch();
+  
   const auth = useSelector((state) => state.AuthReducer.isAuth);
   console.log(auth)
   const handle=()=>{
@@ -137,6 +137,7 @@ navigate("/login")
 }
 
 const DesktopNav = () => {
+  const dispatch = useDispatch();
   const linkColor = useColorModeValue("white", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
@@ -214,34 +215,37 @@ const DesktopNav = () => {
         <ArrowRightIcon h={"11px"} mr={"3px"} />
         Talk to sales
       </Button>
-      {!auth?<Button
-        pb={"15px"}
-        height="40px"
-        width="80px"
-        as={"a"}
-        fontSize={"sm"}
-        color={"white"}
-        fontWeight={500}
-        variant={"link"}
-        onClick={handle}
-      >
-        <ArrowRightIcon h={"11px"} mr={"3px"} />
-        Log in
-      </Button>:<Button
-        pb={"15px"}
-        height="40px"
-        width="80px"
-        as={"a"}
-        fontSize={"sm"}
-        color={"white"}
-        fontWeight={500}
-        variant={"link"}
-        onClick={()=>handlelogout("token")}
-      >
-        <ArrowRightIcon h={"11px"} mr={"3px"} />
-        Log Out
-      </Button>}
-
+      {!auth ? (
+        <Button
+          pb={"15px"}
+          height="40px"
+          width="80px"
+          as={"a"}
+          fontSize={"sm"}
+          color={"white"}
+          fontWeight={500}
+          variant={"link"}
+          onClick={handle}
+        >
+          <ArrowRightIcon h={"11px"} mr={"3px"} />
+          Log in
+        </Button>
+      ) : (
+        <Button
+          pb={"15px"}
+          height="40px"
+          width="80px"
+          as={"a"}
+          fontSize={"sm"}
+          color={"white"}
+          fontWeight={500}
+          variant={"link"}
+          onClick={() => dispatch(handlelogout("token"))}
+        >
+          <ArrowRightIcon h={"11px"} mr={"3px"} />
+          Log Out
+        </Button>
+      )}
     </Stack>
   );
 };
