@@ -12,6 +12,7 @@ import { EditProjects } from "./EditProjects";
 import { useToast } from "@chakra-ui/react";
 
 const ProjectCard = ({ projects }) => {
+ 
   const dispatch = useDispatch();
   const toast = useToast();
   const handleDelete = (text, id) => {

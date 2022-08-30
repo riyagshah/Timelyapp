@@ -23,8 +23,12 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState,useRef } from "react";
 import axios from "axios";
-
+import '../App.css';
+import { GoogleLogin } from 'react-google-login';
 const Signup = () => {
+
+  const clientId =
+  '540186498803-80qis41sh470ockdc9smsddqj9qqdq9a.apps.googleusercontent.com';
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = React.useRef()
   const [form, setForm] = useState({
@@ -54,7 +58,9 @@ const Signup = () => {
       });
     // console.log(form)
   };
-
+const gotogoogleauth=()=>{
+  navigate("/auth/google/callback")
+}
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   return (
     <Box>
@@ -176,8 +182,20 @@ const Signup = () => {
               >
                 Start free 14 day trail
               </Button>
+           
             </VStack>
           </form>
+          {/* <button onclick={gotogoogleauth} className="buttn">
+            <img src="https://d1vbcromo72rmd.cloudfront.net/assets/google_signin-6602e1ab80424c019aaf360ab651d857464162176c58eb0b2f64b503b99c16b7.svg" /> 
+            <div>Sign up with Google</div></button> */}
+             <GoogleLogin
+        clientId={clientId}
+        buttonText="Login"
+
+        cookiePolicy={'single_host_origin'}
+        style={{ marginTop: '100px' }}
+        isSignedIn={true}
+      />
         </Box>
       </Flex>
       <AlertDialog
@@ -194,7 +212,7 @@ const Signup = () => {
             <AlertDialogBody>
              Thank you for Subscribing with us
             </AlertDialogBody>
-
+           
             {/* <AlertDialogFooter>
               <Button ref={cancelRef} onClick={onClose}>
                 Cancel

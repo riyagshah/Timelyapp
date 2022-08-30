@@ -1,6 +1,6 @@
 import React from 'react'
 import HomePart1 from "./HomePart1";
-import Navbar from "../Navbar/Navbar.tsx";
+import Navbar from "../Navbar/Navbar.jsx";
  
 const HomePage = () => {
   return (

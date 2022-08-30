@@ -1,6 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
+import { useDispatch, useSelector} from "react-redux";
 import {
   Box,
   Flex,
@@ -26,13 +27,26 @@ import {
   StarIcon,
 } from "@chakra-ui/icons";
 import { Image } from "@chakra-ui/react";
+import { logoutAPI } from "../../Redux/AuthReducer/action";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
-
+  const dispatch=useDispatch();
+  const auth = useSelector((state) => state.AuthReducer.isAuth);
+  console.log(auth)
+  const handle=()=>{
+    if(!auth)
+    navigate("/login")
+    }
+    const handlelogout=()=>{
+dispatch(logoutAPI());
+navigate("/login")
+    }
   return (
+
     <Box>
+     
       <Flex
         bg={useColorModeValue("#722FD3", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -82,6 +96,7 @@ export default function WithSubnavigation() {
           />
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
+         
           </Flex>
         </Flex>
         <Button
@@ -124,6 +139,21 @@ const DesktopNav = () => {
   const linkColor = useColorModeValue("white", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
+  const auth = useSelector((state) => state.AuthReducer.isAuth);
+  const dispatch=useDispatch();
+  const [sauth,setsauth]=useState(auth)
+  const handle=()=>{
+    if(!auth)
+    navigate("/login")
+
+    }
+    const handlelogout=()=>{
+
+      dispatch(logoutAPI());
+    
+      navigate("/login")
+          }
+
   const navigate = useNavigate();
   return (
     <Stack
@@ -190,7 +220,8 @@ const DesktopNav = () => {
         <ArrowRightIcon h={"11px"} mr={"3px"} />
         Talk to sales
       </Button>
-      <Button
+   
+      {!auth?<Button
         pb={"15px"}
         height="40px"
         width="80px"
@@ -199,16 +230,30 @@ const DesktopNav = () => {
         color={"white"}
         fontWeight={500}
         variant={"link"}
-        onClick={() => navigate("/login")}
+        onClick={handle}
       >
         <ArrowRightIcon h={"11px"} mr={"3px"} />
         Log in
-      </Button>
+      </Button>:<Button
+        pb={"15px"}
+        height="40px"
+        width="80px"
+        as={"a"}
+        fontSize={"sm"}
+        color={"white"}
+        fontWeight={500}
+        variant={"link"}
+        onClick={handlelogout}
+      >
+        <ArrowRightIcon h={"11px"} mr={"3px"} />
+        Log Out
+      </Button>}
+
     </Stack>
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
     <Link
       href={href}
@@ -260,7 +305,7 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
+const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -313,15 +358,9 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
   );
 };
 
-interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
-  loginicon?: string;
-}
 
-const NAV_ITEMS: Array<NavItem> = [
+
+const NAV_ITEMS = [
   {
     label: "Features ",
     children: [

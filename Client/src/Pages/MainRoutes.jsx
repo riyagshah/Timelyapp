@@ -10,11 +10,12 @@ import Signup from "./Signup";
 import DayCalender from "../Components/calender/DayCalender";
 import WeekCalender from "../Components/calender/WeekCalender";
 import Calender from "../Components/calender/MonthCalender";
+import ReqAuth from "../Components/ReqAuth";
 const MainRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/projects" element={<Project />} />
+      <Route path="/projects" element={<ReqAuth><Project/></ReqAuth>}/>
      
       <Route path='/day' element={<DayCalender/>}/>
        <Route path='/week' element={<WeekCalender/>}/>

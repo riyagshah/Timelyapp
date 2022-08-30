@@ -23,7 +23,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import emailjs from '@emailjs/browser';
-import Navbar from "../Components/Navbar/Navbar.tsx"
+import Navbar from "../Components/Navbar/Navbar.jsx"
 import Footerlast from "../Components/Footer/Footerlast";
 import Footer1 from "../Components/Footer/Footer1";
 const Sales = () => {

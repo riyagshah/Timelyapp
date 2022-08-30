@@ -123,3 +123,25 @@
     transform: rotate(360deg);
   }
 }
+.buttn{
+  position: relative;
+    height: 64px;
+    padding: 0 50px 0 50px;
+    margin-bottom: 10px;
+    width: 70%;
+    box-shadow: none;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 16px;
+    border: solid 2px #f2f1f2;
+    background: white;
+    background-color: #fff;
+    color: #7b7b91;
+    font-weight: 500;
+    font-size: 18px;
+   display:flex;
+   margin: auto;
+   
+   justify-content: space-between;
+   padding-top: 3%;
+}
