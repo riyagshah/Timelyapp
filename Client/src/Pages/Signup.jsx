@@ -3,64 +3,46 @@ import {
   Box,
   Heading,
   Text,
-  FormControl,
-  FormLabel,
   Input,
   VStack,
-  Spacer,
   Image,
   useMediaQuery,
   Button,
+  useDisclosure,
   AlertDialog,
-  AlertDialogBody,
-  AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
-  useDisclosure
- 
+  Alert,
+  AlertIcon,
 } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
-import React, { useState,useRef } from "react";
+import {  useNavigate } from "react-router-dom";
+import React from "react";
 import axios from "axios";
-import '../App.css';
-import { GoogleLogin } from 'react-google-login';
+import { useForm } from "react-hook-form";
+
 const Signup = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = React.useRef();
 
-  const clientId =
-  '540186498803-80qis41sh470ockdc9smsddqj9qqdq9a.apps.googleusercontent.com';
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const cancelRef = React.useRef()
-  const [form, setForm] = useState({
-    email: "",
-    name: "",
-    password: "",
-  });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleChange = (e) => {
-    let { name, value } = e.target;
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post("https://whispering-thicket-24456.herokuapp.com/user/signup", form)
+  const onSubmit = async (data) => {
+    console.log(data);
+    await axios
+      .post("https://whispering-thicket-24456.herokuapp.com/user/signup", data)
       .then((res) => {
-        navigate("/login")
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);
       });
-    // console.log(form)
   };
-const gotogoogleauth=()=>{
-  navigate("/auth/google/callback")
-}
+
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   return (
     <Box>
@@ -139,42 +121,42 @@ const gotogoogleauth=()=>{
            
             </form>
           </VStack> */}
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <VStack spacing="25px">
-              <FormControl isRequired>
-                <Input
-                  placeholder="Work Email"
-                  size="lg"
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                />
-              </FormControl>
-
-              <FormControl isRequired>
-                <Input
-                  placeholder="Full name"
-                  size="lg"
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <FormControl isRequired>
-                <Input
-                  placeholder="Password"
-                  size="lg"
-                  type="password"
-                  name="password"
-                  value={form.password}
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <Text>By signing up you agree to the Terms of Service.</Text>
+              <Input
+                placeholder="Work Email"
+                size="lg"
+                type="email"
+                name="email"
+                {...register(
+                  "email",
+                  { required: true },
+                  { pattern: /^\S+@\S+$/i }
+                )}
+              />
+              {errors.email && <Text color="red">Email is required.</Text>}
+              <Input
+                placeholder="Full name"
+                size="lg"
+                type="text"
+                name="name"
+                {...register("name", { required: true })}
+              />
+              {errors.name && <Text color="red">Name is required.</Text>}
+              <Input
+                placeholder="Password"
+                size="lg"
+                type="password"
+                name="password"
+                
+                {...register("password", { required: true ,minLength:4})}
+              />
+              {errors.password && (
+                <Text color="red">Password is required.Minimum of 4 characters required.</Text>
+              )}
+              ;<Text>By signing up you agree to the Terms of Service.</Text>
               <Button
-              onClick={onOpen}
+                onClick={onOpen}
                 type="submit"
                 size="lg"
                 height="65px"
@@ -182,49 +164,27 @@ const gotogoogleauth=()=>{
               >
                 Start free 14 day trail
               </Button>
-           
             </VStack>
           </form>
-          {/* <button onclick={gotogoogleauth} className="buttn">
-            <img src="https://d1vbcromo72rmd.cloudfront.net/assets/google_signin-6602e1ab80424c019aaf360ab651d857464162176c58eb0b2f64b503b99c16b7.svg" /> 
-            <div>Sign up with Google</div></button> */}
-             <GoogleLogin
-        clientId={clientId}
-        buttonText="Login"
-
-        cookiePolicy={'single_host_origin'}
-        style={{ marginTop: '100px' }}
-        isSignedIn={true}
-      />
         </Box>
       </Flex>
-      <AlertDialog
-        isOpen={isOpen}
-        leastDestructiveRef={cancelRef}
-        onClose={onClose}
-      >
-        <AlertDialogOverlay>
-          <AlertDialogContent>
-            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-              Signup Success
-            </AlertDialogHeader>
 
-            <AlertDialogBody>
-             Thank you for Subscribing with us
-            </AlertDialogBody>
-           
-            {/* <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button colorScheme='red' onClick={onClose} ml={3}>
-                Delete
-              </Button>
-            </AlertDialogFooter> */}
-          </AlertDialogContent>
-        </AlertDialogOverlay>
-      </AlertDialog>
-      
+      {!errors && (
+        <AlertDialog
+          isOpen={isOpen}
+          leastDestructiveRef={cancelRef}
+          onClose={onClose}
+        >
+          <AlertDialogOverlay>
+            <AlertDialogContent>
+              <Alert status="success">
+                <AlertIcon />
+                Signup Success
+              </Alert>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
+        </AlertDialog>
+      )}
     </Box>
   );
 };

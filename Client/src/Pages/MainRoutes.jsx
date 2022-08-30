@@ -10,18 +10,46 @@ import Signup from "./Signup";
 import DayCalender from "../Components/calender/DayCalender";
 import WeekCalender from "../Components/calender/WeekCalender";
 import Calender from "../Components/calender/MonthCalender";
-import ReqAuth from "../Components/ReqAuth";
+import RequiredAuth from "../HOC/RequiredAuth";
 const MainRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/projects" element={<ReqAuth><Project/></ReqAuth>}/>
-     
-      <Route path='/day' element={<DayCalender/>}/>
-       <Route path='/week' element={<WeekCalender/>}/>
-       <Route path='/month' element={<Calender/>}/>
+      <Route
+        path="/projects"
+        element={
+          <RequiredAuth>
+            <Project />
+          </RequiredAuth>
+        }
+      />
+
+      <Route
+        path="/day"
+        element={
+          <RequiredAuth>
+            <DayCalender />
+          </RequiredAuth>
+        }
+      />
+      <Route
+        path="/week"
+        element={
+          <RequiredAuth>
+            <WeekCalender />
+          </RequiredAuth>
+        }
+      />
+      <Route
+        path="/month"
+        element={
+          <RequiredAuth>
+            <Calender />
+          </RequiredAuth>
+        }
+      />
       <Route path="/sales" element={<Sales />} />
-      
+
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
     </Routes>

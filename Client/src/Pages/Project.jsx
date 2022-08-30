@@ -1,4 +1,4 @@
-import { Box,  Flex, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box,  Flex, Wrap } from "@chakra-ui/react";
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";

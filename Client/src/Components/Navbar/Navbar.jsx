@@ -2,6 +2,7 @@ import React, { ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
+import {handlelogout} from "../../utils/LocalStorage.jsx";
 import {
   Box,
   Flex,
@@ -27,7 +28,7 @@ import {
   StarIcon,
 } from "@chakra-ui/icons";
 import { Image } from "@chakra-ui/react";
-import { logoutAPI } from "../../Redux/AuthReducer/action";
+
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -40,7 +41,7 @@ export default function WithSubnavigation() {
     navigate("/login")
     }
     const handlelogout=()=>{
-dispatch(logoutAPI());
+// dispatch(logoutAPI());
 navigate("/login")
     }
   return (
@@ -140,19 +141,12 @@ const DesktopNav = () => {
   const linkHoverColor = useColorModeValue("gray.800", "white");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
   const auth = useSelector((state) => state.AuthReducer.isAuth);
-  const dispatch=useDispatch();
-  const [sauth,setsauth]=useState(auth)
   const handle=()=>{
     if(!auth)
     navigate("/login")
 
     }
-    const handlelogout=()=>{
-
-      dispatch(logoutAPI());
     
-      navigate("/login")
-          }
 
   const navigate = useNavigate();
   return (
@@ -220,7 +214,6 @@ const DesktopNav = () => {
         <ArrowRightIcon h={"11px"} mr={"3px"} />
         Talk to sales
       </Button>
-   
       {!auth?<Button
         pb={"15px"}
         height="40px"
@@ -243,7 +236,7 @@ const DesktopNav = () => {
         color={"white"}
         fontWeight={500}
         variant={"link"}
-        onClick={handlelogout}
+        onClick={()=>handlelogout("token")}
       >
         <ArrowRightIcon h={"11px"} mr={"3px"} />
         Log Out

@@ -1,4 +1,4 @@
-import { LOGIN_ERROR, LOGIN_LOADING, LOGIN_SUCCESS, LOGOUT_SUCCESS } from "./actionType";
+import { LOGIN_ERROR, LOGIN_LOADING, LOGIN_SUCCESS} from "./actionType";
 
 import axios from "axios";
 
@@ -10,14 +10,16 @@ export const loginApi = (data) => (dispatch) => {
       password: data.password,
     })
     .then((res) => {
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      console.log(res.data);
+      if (res.data == "Invalid Credentials") {
+        return;
+      } else {
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      }
     })
     .catch(() => {
       dispatch({ type: LOGIN_ERROR });
     });
 
 };
-// logoutAPI
-export const logoutAPI = () => (dispatch) => {
-  dispatch({ type: LOGOUT_SUCCESS });
-};
+
