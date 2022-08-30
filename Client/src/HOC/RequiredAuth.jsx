@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom'
 
 const RequiredAuth = ({children}) => {
     const isAuth = useSelector(store => store.AuthReducer.isAuth);
-    console.log(isAuth);
+   
     if (isAuth) {
         return children;
     }

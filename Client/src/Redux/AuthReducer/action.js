@@ -4,14 +4,13 @@ import axios from "axios";
 
 export const loginApi = (data) => (dispatch) => {
   dispatch({ type: LOGIN_LOADING });
-  axios
+  return axios
     .post("https://whispering-thicket-24456.herokuapp.com/user/login", {
       email: data.email,
       password: data.password,
     })
     .then((res) => {
-      console.log(res.data);
-      if (res.data == "Invalid Credentials") {
+      if (res.data === "Invalid Credentials") {
         return;
       } else {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data });

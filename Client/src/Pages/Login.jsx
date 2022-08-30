@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginApi } from "../Redux/AuthReducer/action";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { getProjets } from "../Redux/AppReducer/action";
 
 const Login = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,8 +44,8 @@ const Login = () => {
   
 
   const onSubmit = async (data) => {
-    console.log(data);
-    dispatch(loginApi(data));
+    
+    dispatch(loginApi(data)).then((res)=>dispatch(getProjets()));
   };
 
   useEffect(() => {
