@@ -10,7 +10,12 @@ export const loginApi = (data) => (dispatch) => {
       password: data.password,
     })
     .then((res) => {
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      console.log(res.data);
+      if (res.data == "Invalid Credentials") {
+        return;
+      } else {
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      }
     })
     .catch(() => {
       dispatch({ type: LOGIN_ERROR });

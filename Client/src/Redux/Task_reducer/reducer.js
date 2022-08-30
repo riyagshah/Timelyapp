@@ -20,7 +20,7 @@ return {...state,project:payload}
       return { ...state, project: newprojectArr };
 
       case types.Delete_PROJECT:
-      let delelteArray =state.project.filter((e)=> e.refNO!=payload)
+      let delelteArray =state.project.filter((e)=> e.refNO!==payload)
       return { ...state, project: delelteArray };
 
       case types.EDIT_PROJECT:
