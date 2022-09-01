@@ -1,6 +1,6 @@
 
 
-import { getLocalData, handlelogout, logout, saveLocalData } from "../../utils/LocalStorage";
+import { getLocalData,  logout, saveLocalData } from "../../utils/LocalStorage";
 import { LOGIN_ERROR, LOGIN_LOADING, LOGIN_SUCCESS } from "./actionType";
 
 
@@ -29,7 +29,7 @@ const reducer = (state=initialState, {type,payload}) => {
         return { ...state, loading: false, error: true, isAuth: false };
       }
       case "LOGOUT": {
-            console.log("logout");
+            
             logout(payload, "");
              return { ...state, loading: true, isAuth: false, error: false };
       }

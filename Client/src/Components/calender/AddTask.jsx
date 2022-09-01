@@ -32,6 +32,7 @@ function AddTask({ time, projectArray,wid="11rem" }) {
  
   const toast = useToast()
   const dispatch = useDispatch();
+  console.log(projectArray,"pro")
   const submitButton =  () => {
     if (text) {
       const payload = {

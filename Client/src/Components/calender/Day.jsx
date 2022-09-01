@@ -24,7 +24,12 @@ const Day = ({
   const [projectArray, setProjectArray] = useState([]);
   useEffect(() => {
     axios
-      .get("https://whispering-thicket-24456.herokuapp.com/project")
+      .get("https://whispering-thicket-24456.herokuapp.com/project", {
+        headers: {
+          "Content-Type": "application/json",
+          authentication: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((res) => setProjectArray(res.data))
       .catch((err) => console.log(err));
   }, []);
