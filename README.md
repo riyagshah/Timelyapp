@@ -14,8 +14,7 @@ Welcome, we're are team “Timely”, and this Readme contains details about our
 ![js](https://img.shields.io/badge/JS-%2320232a.svg?style=for-the-badge&logo=CSS&logoColor=%2361DAFB)
 
 
-## Deployed Link:https://timely-clone-three.vercel.app
-
+ ### Deploy Link -> [`Check here`](https://timely-clone.netlify.app/)
 
 ## Pages & Features
 
